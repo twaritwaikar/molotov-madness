@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbdlossn2825m"]
+[gd_scene load_steps=4 format=3 uid="uid://cbdlossn2825m"]
+
+[ext_resource type="PackedScene" uid="uid://y5tjhjgc0h4q" path="res://player/player.tscn" id="1_y76fb"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_r1p8b"]
 
@@ -14,3 +16,8 @@ mesh = SubResource("BoxMesh_r1p8b")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_xhjhl")
+
+[node name="Player" parent="." instance=ExtResource("1_y76fb")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 4)
