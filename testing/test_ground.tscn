@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbdlossn2825m"]
+[gd_scene load_steps=5 format=3 uid="uid://cbdlossn2825m"]
 
 [ext_resource type="PackedScene" uid="uid://y5tjhjgc0h4q" path="res://player/player.tscn" id="1_y76fb"]
+[ext_resource type="Script" path="res://testing/camera.gd" id="2_qx1k0"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_r1p8b"]
 
@@ -20,4 +21,16 @@ shape = SubResource("BoxShape3D_xhjhl")
 [node name="Player" parent="." instance=ExtResource("1_y76fb")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 4)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9, 0)
+current = true
+script = ExtResource("2_qx1k0")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Camera3D"]
+
+[node name="DebugCamera" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7, 5, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 0, 0)
+light_volumetric_fog_energy = 9.356
+light_angular_distance = 22.35
