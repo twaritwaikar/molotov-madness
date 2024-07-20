@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://cr2k3ynvq7u13"]
+
+[ext_resource type="Script" path="res://molotov/molotov.gd" id="1_w20gn"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_06ij1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7r26b"]
+albedo_color = Color(0.914392, 0.171959, 1.92523e-07, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_j541x"]
+material = SubResource("StandardMaterial3D_7r26b")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sft3x"]
+
+[node name="Molotov" type="RigidBody3D"]
+script = ExtResource("1_w20gn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_06ij1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_j541x")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_sft3x")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

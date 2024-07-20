@@ -1,11 +1,10 @@
 extends CharacterBody3D
 
 const SPEED = 10.0
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-var dragging = false
-var click_radius = 32
+var aiming = false
+
+@onready var camera = get_parent().get_node("Camera3D")
 
 func _physics_process(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -21,16 +20,29 @@ func _physics_process(delta):
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if not dragging and event.pressed:
-			dragging = true
-		if dragging and not event.pressed:
-			dragging = false
+		if not aiming and event.pressed:
+			start_aiming()
+		if aiming and not event.pressed:
+			end_aiming()
 
 	# Always look towards the mouse
 	if event is InputEventMouseMotion:
-		var camera: Camera3D = get_parent().get_node("Camera3D")
 		var from = camera.project_ray_origin(event.position)
 		var to = from + camera.project_ray_normal(event.position) * 100
 		var cursor_position = Plane(Vector3.UP, transform.origin.y).intersects_ray(from, to)
 
 		self.look_at(cursor_position)
+
+func _process(delta):
+	pass
+
+func start_aiming():
+	aiming = true
+	print("Start aiming")
+
+func end_aiming():
+	aiming = false
+	
+	
+	
+	print("End aiming")
