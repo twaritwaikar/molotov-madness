@@ -25,7 +25,7 @@ theme_override_font_sizes/font_size = 20
 text = "Oxygen
 "
 
-[node name="Healthbar" parent="Panel" instance=ExtResource("1_b3tps")]
+[node name="Oxygenbar" parent="Panel" instance=ExtResource("1_b3tps")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
