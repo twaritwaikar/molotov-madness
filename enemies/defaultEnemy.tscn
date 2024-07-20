@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cg71r6xm5itpw"]
+
+[ext_resource type="Script" path="res://enemies/defaultEnemy.gd" id="1_g73ax"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_krtcd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6raj5"]
+height = 2.64609
+
+[sub_resource type="SphereMesh" id="SphereMesh_w3yiu"]
+
+[node name="Enemy" type="CharacterBody3D"]
+disable_mode = 2
+collision_layer = 0
+motion_mode = 1
+script = ExtResource("1_g73ax")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_krtcd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_6raj5")
+
+[node name="moveTarget" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.51144)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="moveTarget"]
+mesh = SubResource("SphereMesh_w3yiu")
