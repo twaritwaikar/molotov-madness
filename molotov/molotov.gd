@@ -1,7 +1,10 @@
 extends RigidBody3D
 
-func _process(delta):
-	pass
+var base_angular_velocity = 50
+
+func _ready():
+	angular_velocity = Vector3(randf_range(0.5, 1.0), randf_range(0.5, 1.0), randf_range(0.5, 1.0)).normalized()
+	angular_velocity *= base_angular_velocity
 
 func _physics_process(delta):
 	pass

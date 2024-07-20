@@ -4,11 +4,17 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_06ij1"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7r26b"]
-albedo_color = Color(0.914392, 0.171959, 1.92523e-07, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7latv"]
+transparency = 1
+albedo_color = Color(0.477557, 0.742927, 0.0935448, 1)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.0
+refraction_enabled = true
+refraction_scale = 0.32
 
-[sub_resource type="SphereMesh" id="SphereMesh_j541x"]
-material = SubResource("StandardMaterial3D_7r26b")
+[sub_resource type="CylinderMesh" id="CylinderMesh_sxy0r"]
+material = SubResource("StandardMaterial3D_7latv")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_sft3x"]
 
@@ -24,8 +30,15 @@ script = ExtResource("1_w20gn")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_06ij1")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_j541x")
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D(-5.46392e-09, 0.125, 0, -0.125, -5.46392e-09, 0, 0, 0, 0.125, 0.25, 0, 0)
+mesh = SubResource("CylinderMesh_sxy0r")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D(-1.09278e-08, 0.25, 0, -0.25, -1.09278e-08, 0, 0, 0, 0.25, -0.1, 0, 0)
+mesh = SubResource("CylinderMesh_sxy0r")
+skeleton = NodePath("../..")
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -36,5 +49,20 @@ monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_sft3x")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, 0)
+light_color = Color(0.974363, 0.454579, 0.17104, 1)
+light_energy = 3.001
+shadow_enabled = true
+omni_range = 2.655
+omni_attenuation = 3.13833
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.3, 0, 0)
+light_color = Color(0.974363, 0.454579, 0.17104, 1)
+light_energy = 9.522
+shadow_enabled = true
+spot_range = 2.907
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

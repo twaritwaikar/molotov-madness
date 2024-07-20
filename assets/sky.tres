@@ -1,4 +1,4 @@
-[gd_resource type="Environment" load_steps=4 format=3 uid="uid://cuen10x4vyclq"]
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://dv45nrn10x121"]
 
 [ext_resource type="Texture2D" uid="uid://d1c82o6iu2yjy" path="res://assets/images/6484259.jpg" id="1_66icc"]
 
@@ -10,7 +10,7 @@ sky_material = SubResource("PanoramaSkyMaterial_omqsj")
 
 [resource]
 background_mode = 2
-background_energy_multiplier = 2.0
+background_energy_multiplier = 0.0
 sky = SubResource("Sky_5u52a")
 sky_rotation = Vector3(1.82736, -1.59872, 0.200713)
 ambient_light_source = 3
