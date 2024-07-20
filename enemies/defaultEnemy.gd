@@ -39,3 +39,6 @@ func _process(delta):
 		if(enemy_type == "crazy"):
 			var x = randf_range(0, 1000)
 			velocity = initial_velocity.rotated(Vector3(0, 1, 0), x).normalized() * speed
+
+func rekt():
+	print("Enemy is kil")

@@ -1,6 +1,6 @@
 extends Camera3D
 
-@export var camera_height = 10.0
+@export var camera_height = 20.0
 @export var speed_fear_modifier = 0.1
 
 @export var stickiness_x = 0.05

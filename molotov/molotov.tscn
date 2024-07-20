@@ -13,6 +13,12 @@ material = SubResource("StandardMaterial3D_7r26b")
 [sub_resource type="SphereShape3D" id="SphereShape3D_sft3x"]
 
 [node name="Molotov" type="RigidBody3D"]
+disable_mode = 2
+collision_layer = 8
+collision_mask = 3
+can_sleep = false
+max_contacts_reported = 10
+contact_monitor = true
 script = ExtResource("1_w20gn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -22,6 +28,11 @@ shape = SubResource("SphereShape3D_06ij1")
 mesh = SubResource("SphereMesh_j541x")
 
 [node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+disable_mode = 2
+collision_layer = 16
+collision_mask = 6
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_sft3x")

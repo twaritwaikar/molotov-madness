@@ -40,3 +40,11 @@ move_down={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":1,"axis_value":1.0,"script":null)
 ]
 }
+
+[layer_names]
+
+3d_physics/layer_1="Walls"
+3d_physics/layer_2="Enemies"
+3d_physics/layer_3="Player"
+3d_physics/layer_4="Molotovs"
+3d_physics/layer_5="MolotovDetector"

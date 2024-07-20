@@ -7,16 +7,16 @@
 [sub_resource type="BoxMesh" id="BoxMesh_r1p8b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xhjhl"]
-size = Vector3(10, 1, 10)
+size = Vector3(23, 1, 38)
 
 [node name="TestGround" type="StaticBody3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, -0.5, 0)
+transform = Transform3D(40, 0, 0, 0, 1, 0, 0, 0, 38, 0, -0.5, 0)
 mesh = SubResource("BoxMesh_r1p8b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -0.5, 0)
 shape = SubResource("BoxShape3D_xhjhl")
 disabled = true
 

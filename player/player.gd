@@ -1,9 +1,11 @@
 extends CharacterBody3D
 
-const SPEED = 10.0
+@export var throw_power = 10
 
+const SPEED = 10.0
 var aiming = false
 
+var molotov_scene = preload("res://molotov/molotov.tscn")
 @onready var camera = get_parent().get_node("Camera3D")
 
 func _physics_process(delta):
@@ -38,11 +40,18 @@ func _process(delta):
 
 func start_aiming():
 	aiming = true
+	
 	print("Start aiming")
 
 func end_aiming():
 	aiming = false
-	
-	
+	_throw_molotov(transform.basis * Vector3.FORWARD + Vector3.UP * 0.5, throw_power)
 	
 	print("End aiming")
+
+func _throw_molotov(direction: Vector3, power: float):
+	var molotov_instance = molotov_scene.instantiate()
+	molotov_instance.position = transform.origin + get_parent().position + Vector3(0, 2, 0)
+	
+	get_parent().add_child(molotov_instance)
+	molotov_instance.apply_impulse(direction * power)
