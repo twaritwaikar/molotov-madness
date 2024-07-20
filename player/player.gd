@@ -46,16 +46,17 @@ func start_aiming():
 
 func end_aiming():
 	var applied_power = hold_duration / MAX_HOLD
-	_throw_molotov(transform.basis * Vector3.FORWARD + Vector3.UP * applied_power, throw_power * applied_power)
+	_throw_molotov(transform.basis * Vector3.FORWARD + Vector3.UP * 3.0, throw_power * applied_power)
 	
 	aiming = false
 	hold_duration = 0.0
 
 func _throw_molotov(direction: Vector3, power: float):
 	var molotov_instance = molotov_scene.instantiate()
-	molotov_instance.position = transform.origin + get_parent().position
-	
 	get_parent().add_child(molotov_instance)
+	molotov_instance.position = transform.origin + get_parent().position
+	molotov_instance.position.y = 3.5
+	
 	molotov_instance.linear_velocity = direction.normalized() * power
 	molotov_instance.linear_velocity.y /= power
 	molotov_instance.apply_impulse(direction * power)

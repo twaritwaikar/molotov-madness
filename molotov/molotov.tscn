@@ -1,8 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://cr2k3ynvq7u13"]
+[gd_scene load_steps=12 format=3 uid="uid://cr2k3ynvq7u13"]
 
 [ext_resource type="Script" path="res://molotov/molotov.gd" id="1_w20gn"]
+[ext_resource type="AudioStream" uid="uid://cxtjeq26stu3q" path="res://assets/sfx/throw_molo.wav" id="2_wvo2i"]
+[ext_resource type="AudioStream" uid="uid://cwar4jhkrfudt" path="res://assets/sfx/explode_molo.wav" id="3_qjuo0"]
+[ext_resource type="AudioStream" uid="uid://7lhh42xxbxs8" path="res://assets/sfx/bounce_molo.wav" id="4_uaecn"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_06ij1"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qjnsa"]
+radius = 0.2
+height = 0.8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sft3x"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ymd7g"]
+playback_mode = 2
+random_pitch = 2.04
+random_volume_offset_db = 3.85
+streams_count = 1
+stream_0/stream = ExtResource("2_wvo2i")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4js4x"]
+playback_mode = 2
+random_pitch = 2.0
+random_volume_offset_db = 5.0
+streams_count = 1
+stream_0/stream = ExtResource("3_qjuo0")
+stream_0/weight = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7latv"]
 transparency = 1
@@ -16,29 +39,25 @@ refraction_scale = 0.32
 [sub_resource type="CylinderMesh" id="CylinderMesh_sxy0r"]
 material = SubResource("StandardMaterial3D_7latv")
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_sft3x"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gctgw"]
+playback_mode = 2
+random_pitch = 3.19
+streams_count = 1
+stream_0/stream = ExtResource("4_uaecn")
+stream_0/weight = 1.0
 
 [node name="Molotov" type="RigidBody3D"]
 disable_mode = 2
 collision_layer = 8
-collision_mask = 3
+collision_mask = 7
 can_sleep = false
-max_contacts_reported = 10
+max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1_w20gn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_06ij1")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="CollisionShape3D"]
-transform = Transform3D(-5.46392e-09, 0.125, 0, -0.125, -5.46392e-09, 0, 0, 0, 0.125, 0.25, 0, 0)
-mesh = SubResource("CylinderMesh_sxy0r")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
-transform = Transform3D(-1.09278e-08, 0.25, 0, -0.25, -1.09278e-08, 0, 0, 0, 0.25, -0.1, 0, 0)
-mesh = SubResource("CylinderMesh_sxy0r")
-skeleton = NodePath("../..")
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_qjnsa")
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -51,7 +70,7 @@ monitorable = false
 shape = SubResource("SphereShape3D_sft3x")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 light_color = Color(0.974363, 0.454579, 0.17104, 1)
 light_energy = 3.001
 shadow_enabled = true
@@ -64,5 +83,23 @@ light_color = Color(0.974363, 0.454579, 0.17104, 1)
 light_energy = 9.522
 shadow_enabled = true
 spot_range = 2.907
+
+[node name="ThrowAudioStream" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_ymd7g")
+volume_db = 5.0
+
+[node name="ExplodeAudioStream" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_4js4x")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-5.46392e-09, 0.125, 0, -0.125, -5.46392e-09, 0, 0, 0, 0.125, 0.25, 0, 0)
+mesh = SubResource("CylinderMesh_sxy0r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.09278e-08, 0.25, 0, -0.25, -1.09278e-08, 0, 0, 0, 0.25, -0.1, 0, 0)
+mesh = SubResource("CylinderMesh_sxy0r")
+
+[node name="BounceAudioStream" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_gctgw")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
