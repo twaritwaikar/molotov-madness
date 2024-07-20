@@ -40,9 +40,11 @@ script = ExtResource("2_g1byd")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Camera3D"]
 
+[node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
+current = true
+
 [node name="DebugCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 1.06581e-14, -5.32907e-15, 0.866025, 0.5, -9.23022e-15, -0.5, 0.866025, -1, 10.7615, 19.2849)
-current = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.631254, -0.764984, 0.127744, 0.31862, 0.405955, 0.856552, -0.707107, -0.5, 0.5, 0, 4.34865, 0)

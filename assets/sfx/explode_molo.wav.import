@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/explode_molo.wav-1553e2fc8342de28891464137fb1
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
