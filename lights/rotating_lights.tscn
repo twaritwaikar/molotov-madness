@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3e0nmxjpemxt"]
+
+[ext_resource type="Script" path="res://lights/rotating_lights.gd" id="1_ly0kp"]
+
+[node name="RotatingLights" type="Node3D"]
+script = ExtResource("1_ly0kp")
+speed = 5
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.823394, 0.56747, 0, -0.56747, 0.823394, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+light_energy = 1.485
+shadow_enabled = true
+spot_range = 1392.19
+spot_attenuation = 0.225313

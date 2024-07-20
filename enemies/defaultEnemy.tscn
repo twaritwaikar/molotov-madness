@@ -15,14 +15,13 @@ height = 2.64609
 
 [node name="Enemy" type="CharacterBody3D"]
 disable_mode = 2
-collision_layer = 2
-collision_mask = 29
+collision_layer = 0
 motion_mode = 1
 script = ExtResource("1_g73ax")
-metadata/is_enemy = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+gi_mode = 2
 mesh = ExtResource("2_cwkhw")
 surface_material_override/0 = SubResource("StandardMaterial3D_h381s")
 surface_material_override/1 = ExtResource("3_vnlbh")
