@@ -1,10 +1,11 @@
 extends CharacterBody3D
 
-@export var throw_power = 10
+@export var throw_power = 15
 
 const SPEED = 10.0
 var aiming = false
-
+var hold_duration = 0.0 # seconds
+const MAX_HOLD = 1.0 # seconds
 var molotov_scene = preload("res://molotov/molotov.tscn")
 @onready var camera = get_parent().get_node("Camera3D")
 
@@ -32,26 +33,29 @@ func _input(event):
 		var from = camera.project_ray_origin(event.position)
 		var to = from + camera.project_ray_normal(event.position) * 100
 		var cursor_position = Plane(Vector3.UP, transform.origin.y).intersects_ray(from, to)
-
-		self.look_at(cursor_position)
+		if cursor_position:
+			self.look_at(cursor_position)
 
 func _process(delta):
-	pass
+	if aiming:
+		hold_duration += delta
+		clampf(hold_duration, 0.0, MAX_HOLD)
 
 func start_aiming():
 	aiming = true
-	
-	print("Start aiming")
 
 func end_aiming():
-	aiming = false
-	_throw_molotov(transform.basis * Vector3.FORWARD + Vector3.UP * 0.5, throw_power)
+	var applied_power = hold_duration / MAX_HOLD
+	_throw_molotov(transform.basis * Vector3.FORWARD + Vector3.UP * applied_power, throw_power * applied_power)
 	
-	print("End aiming")
+	aiming = false
+	hold_duration = 0.0
 
 func _throw_molotov(direction: Vector3, power: float):
 	var molotov_instance = molotov_scene.instantiate()
-	molotov_instance.position = transform.origin + get_parent().position + Vector3(0, 2, 0)
+	molotov_instance.position = transform.origin + get_parent().position
 	
 	get_parent().add_child(molotov_instance)
+	molotov_instance.linear_velocity = direction.normalized() * power
+	molotov_instance.linear_velocity.y /= power
 	molotov_instance.apply_impulse(direction * power)

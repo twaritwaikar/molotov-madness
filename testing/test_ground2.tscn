@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dme4n8ykwg0n5"]
+[gd_scene load_steps=9 format=3 uid="uid://belhj3umardow"]
 
 [ext_resource type="PackedScene" uid="uid://y5tjhjgc0h4q" path="res://player/player.tscn" id="1_hrti0"]
 [ext_resource type="Script" path="res://testing/camera.gd" id="2_g1byd"]
 [ext_resource type="PackedScene" uid="uid://bckw18bbkkp3m" path="res://testing/enemytesting.tscn" id="3_kpqvl"]
-[ext_resource type="Environment" uid="uid://cuen10x4vyclq" path="res://assets/sky.tres" id="4_geqie"]
+[ext_resource type="Environment" uid="uid://dv45nrn10x121" path="res://assets/sky.tres" id="4_geqie"]
 [ext_resource type="PackedScene" uid="uid://b3e0nmxjpemxt" path="res://lights/rotating_lights.tscn" id="5_bpa22"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_r1p8b"]
@@ -13,9 +13,11 @@ metallic_specular = 1.0
 roughness = 0.2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xhjhl"]
-size = Vector3(10, 1, 10)
+size = Vector3(29.14, 1, 27.87)
 
 [node name="TestGround" type="StaticBody3D"]
+disable_mode = 2
+collision_mask = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(32.7683, 0, 0, 0, 1.25815, 0, 0, 0, 38.2307, -1.91837, -0.5, 0)
@@ -26,17 +28,14 @@ surface_material_override/0 = SubResource("StandardMaterial3D_4xdgu")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_xhjhl")
-disabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_hrti0")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 26, 0)
 current = true
 fov = 37.8493
 script = ExtResource("2_g1byd")
-stickiness_x = 1.0
-stickiness_y = 1.0
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Camera3D"]
 
