@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqtl0yyf85es2"]
+[gd_scene load_steps=3 format=3 uid="uid://cqtl0yyf85es2"]
 
+[ext_resource type="Script" path="res://UI/HUD.gd" id="1_7eqeu"]
 [ext_resource type="PackedScene" uid="uid://dsobtb2o60p42" path="res://UI/oxygenbar.tscn" id="1_b3tps"]
 
 [node name="HUG" type="CanvasLayer"]
 follow_viewport_enabled = true
+script = ExtResource("1_7eqeu")
 
 [node name="Panel" type="Panel" parent="."]
 anchors_preset = 5
@@ -44,3 +46,9 @@ layout_mode = 0
 offset_right = 1145.0
 offset_bottom = 643.0
 stretch_mode = 3
+
+[node name="Timer" type="Timer" parent="Panel"]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Panel/Timer" to="Panel/Oxygenbar" method="_on_timer_timeout"]

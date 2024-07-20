@@ -1,6 +1,7 @@
 extends ProgressBar
 
 @onready var timer = $Timer
+#@onready var oxygenBar = $Oxygenbar
 
 var oxygen = 100: set = _set_oxy
 
@@ -11,8 +12,7 @@ func _set_oxy(new_oxy):
 	
 	if oxygen < 0:
 		queue_free()
-
-
+		
 
 func _init_oxygen(_oxygen):
 	oxygen = _oxygen
@@ -20,11 +20,26 @@ func _init_oxygen(_oxygen):
 	value = oxygen
 
 ## Called when the node enters the scene tree for the first time.
-#func _ready():
-	#pass # Replace with function body.
+func _ready():
+	_set_oxy(100)
+	timer.start()
 #
 #
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	pass
+	if oxygen < 10:
+		
+		if Engine.get_frames_drawn() % 50 > 25:
+			modulate.a = lerp(modulate.a, 0.0, 0.1)
+			modulate.g = lerp(modulate.g, 0.0, 0.1) 
+			modulate.b = lerp(modulate.b, 0.0, 0.1) 
+		else:
+			modulate.a = lerp(modulate.a, 1.0, 0.1) 
+			modulate.g = lerp(modulate.g, 1.0, 0.1) 
+			modulate.b = lerp(modulate.b, 1.0, 0.1) 
+
+func _on_timer_timeout():
+	oxygen -=1
+	_set_oxy(oxygen)
+	pass # Replace with function body.
