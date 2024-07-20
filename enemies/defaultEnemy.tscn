@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://cg71r6xm5itpw"]
+[gd_scene load_steps=7 format=3 uid="uid://cg71r6xm5itpw"]
 
 [ext_resource type="Script" path="res://enemies/defaultEnemy.gd" id="1_g73ax"]
+[ext_resource type="ArrayMesh" uid="uid://d2jnf0g7t4ofm" path="res://assets/models/enemy.obj" id="2_cwkhw"]
+[ext_resource type="Material" uid="uid://dhsmkumkicpph" path="res://assets/singh.tres" id="3_vnlbh"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_krtcd"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h381s"]
+albedo_color = Color(0, 0.713726, 0.254902, 1)
+roughness = 0.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6raj5"]
 height = 2.64609
@@ -14,10 +18,13 @@ disable_mode = 2
 collision_layer = 0
 motion_mode = 1
 script = ExtResource("1_g73ax")
-metadata/is_enemy = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CylinderMesh_krtcd")
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+mesh = ExtResource("2_cwkhw")
+surface_material_override/0 = SubResource("StandardMaterial3D_h381s")
+surface_material_override/1 = ExtResource("3_vnlbh")
+surface_material_override/2 = ExtResource("3_vnlbh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_6raj5")
@@ -26,4 +33,5 @@ shape = SubResource("CapsuleShape3D_6raj5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.51144)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="moveTarget"]
+visible = false
 mesh = SubResource("SphereMesh_w3yiu")

@@ -28,12 +28,14 @@ func _physics_process(delta):
 		if(isHit):
 			velocity = target.position - position
 			velocity.y = 0
-	print(velocity, target.position, position, target.position - position)
+	#print(velocity, target.position, position, target.position - position)
 	velocity = velocity.normalized()
 	velocity = velocity * speed
+
+func _process(delta):
+	$MeshInstance3D.look_at(position - velocity)
 
 	if move_and_collide(velocity*delta):
 		if(enemy_type == "crazy"):
 			var x = randf_range(0, 1000)
-			rotate_y(x)
-			velocity = initial_velocity.rotated(Vector3(0, 1, 0), rotation_degrees.y).normalized() * speed
+			velocity = initial_velocity.rotated(Vector3(0, 1, 0), x).normalized() * speed
