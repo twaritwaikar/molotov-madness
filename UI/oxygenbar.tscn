@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsobtb2o60p42"]
+
+[ext_resource type="Script" path="res://UI/oxygenbar.gd" id="1_n7vk3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csdfs"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jq4kd"]
+bg_color = Color(7.58429e-07, 0.643906, 0.920927, 1)
+
+[node name="OxygenBar" type="ProgressBar"]
+z_index = 1
+offset_right = 240.0
+offset_bottom = 4.0
+theme_override_styles/background = SubResource("StyleBoxFlat_csdfs")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jq4kd")
+value = 60.0
+show_percentage = false
+script = ExtResource("1_n7vk3")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

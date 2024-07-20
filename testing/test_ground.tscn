@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbdlossn2825m"]
+[gd_scene load_steps=7 format=3 uid="uid://cbdlossn2825m"]
 
 [ext_resource type="PackedScene" uid="uid://y5tjhjgc0h4q" path="res://player/player.tscn" id="1_y76fb"]
 [ext_resource type="Script" path="res://testing/camera.gd" id="2_qx1k0"]
+[ext_resource type="PackedScene" uid="uid://cqtl0yyf85es2" path="res://UI/HUD.tscn" id="2_u4k40"]
 [ext_resource type="PackedScene" uid="uid://bckw18bbkkp3m" path="res://testing/enemytesting.tscn" id="3_bo2uq"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_r1p8b"]
@@ -21,6 +22,8 @@ shape = SubResource("BoxShape3D_xhjhl")
 disabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_y76fb")]
+
+[node name="Hud" parent="." instance=ExtResource("2_u4k40")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -4.555, 43.955, 47)
