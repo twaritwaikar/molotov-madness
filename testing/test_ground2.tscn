@@ -42,7 +42,6 @@ script = ExtResource("2_g1byd")
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Camera3D"]
 
 [node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
-current = true
 
 [node name="DebugCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 1.06581e-14, -5.32907e-15, 0.866025, 0.5, -9.23022e-15, -0.5, 0.866025, -1, 10.7615, 19.2849)
@@ -58,13 +57,13 @@ sky_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.904484, 1.24548)
 
 [node name="Enemy" parent="Enemytesting" index="1"]
-speed = 10
+speed = 15
 
 [node name="Enemy2" parent="Enemytesting" index="2"]
-speed = 10
+speed = 15
 
 [node name="Enemy3" parent="Enemytesting" index="3"]
-speed = 10
+speed = 15
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("4_geqie")

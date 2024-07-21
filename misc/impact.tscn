@@ -4,31 +4,31 @@
 offsets = PackedFloat32Array(0, 0.663636, 0.854545)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.729412, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_g6xqu"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qft7i"]
 gradient = SubResource("Gradient_dtklc")
 
 [sub_resource type="Curve" id="Curve_6w236"]
 _data = [Vector2(0, 0.164835), 0.0, 0.0, 0, 0, Vector2(0.492754, 1), 0.433281, 0.433281, 0, 0, Vector2(1, 1), -0.235316, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_ywxq2"]
+[sub_resource type="CurveTexture" id="CurveTexture_60xpd"]
 curve = SubResource("Curve_6w236")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pl085"]
 gravity = Vector3(0, 0, 0)
 scale_max = 10.0
-scale_curve = SubResource("CurveTexture_ywxq2")
+scale_curve = SubResource("CurveTexture_60xpd")
 color = Color(0.925353, 0.925353, 0.925353, 1)
-color_ramp = SubResource("GradientTexture1D_g6xqu")
+color_ramp = SubResource("GradientTexture1D_qft7i")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_th1fk"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_djedi"]
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
 
 [sub_resource type="TorusMesh" id="TorusMesh_jkxo8"]
-material = SubResource("StandardMaterial3D_th1fk")
+material = SubResource("StandardMaterial3D_djedi")
 outer_radius = 0.483
 
 [node name="Impact" type="Node3D"]
