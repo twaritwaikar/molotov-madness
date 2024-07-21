@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cg71r6xm5itpw"]
+[gd_scene load_steps=14 format=3 uid="uid://cg71r6xm5itpw"]
 
 [ext_resource type="Script" path="res://enemies/defaultEnemy.gd" id="1_g73ax"]
 [ext_resource type="ArrayMesh" uid="uid://d2jnf0g7t4ofm" path="res://assets/models/enemy.obj" id="2_cwkhw"]
 [ext_resource type="Material" uid="uid://dhsmkumkicpph" path="res://assets/singh.tres" id="3_vnlbh"]
 [ext_resource type="PackedScene" uid="uid://0payu0dnwm5h" path="res://misc/fire.tscn" id="4_ga5of"]
+[ext_resource type="AudioStream" uid="uid://br5ux4voetr0u" path="res://assets/sfx/burn.wav" id="5_ct1fd"]
+[ext_resource type="AudioStream" path="res://assets/sfx/kill.wav" id="6_4ugg7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h381s"]
 transparency = 1
@@ -67,5 +69,12 @@ amount = 25
 one_shot = false
 explosiveness = 0.0
 process_material = SubResource("ParticleProcessMaterial_ia4ni")
+
+[node name="BurnAudioStream" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_ct1fd")
+
+[node name="KillAudioStream" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_4ugg7")
+volume_db = 10.0
 
 [editable path="Fire"]
