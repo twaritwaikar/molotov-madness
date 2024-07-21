@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cr2k3ynvq7u13"]
+[gd_scene load_steps=17 format=3 uid="uid://cr2k3ynvq7u13"]
 
 [ext_resource type="Script" path="res://molotov/molotov.gd" id="1_w20gn"]
 [ext_resource type="AudioStream" uid="uid://cxtjeq26stu3q" path="res://assets/sfx/throw_molo.wav" id="2_wvo2i"]
 [ext_resource type="AudioStream" uid="uid://cwar4jhkrfudt" path="res://assets/sfx/explode_molo.wav" id="3_qjuo0"]
 [ext_resource type="AudioStream" uid="uid://7lhh42xxbxs8" path="res://assets/sfx/bounce_molo.wav" id="4_uaecn"]
+[ext_resource type="PackedScene" uid="uid://0payu0dnwm5h" path="res://misc/fire.tscn" id="5_qffps"]
+[ext_resource type="PackedScene" uid="uid://35kcte6qo20n" path="res://misc/impact.tscn" id="6_7773f"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qjnsa"]
 radius = 0.2
@@ -46,10 +48,32 @@ streams_count = 1
 stream_0/stream = ExtResource("4_uaecn")
 stream_0/weight = 1.0
 
+[sub_resource type="Curve" id="Curve_tuwl6"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 200), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_kwh1n"]
+curve = SubResource("Curve_tuwl6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xkm6i"]
+emission_shape = 2
+emission_sphere_radius = 1.0
+direction = Vector3(0, 25, 0)
+spread = 5.0
+initial_velocity_min = 2.5
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+linear_accel_curve = SubResource("CurveTexture_kwh1n")
+scale_min = 0.5
+scale_max = 1.5
+
 [node name="Molotov" type="RigidBody3D"]
 disable_mode = 2
 collision_layer = 8
 collision_mask = 7
+gravity_scale = 5.0
 can_sleep = false
 max_contacts_reported = 1
 contact_monitor = true
@@ -72,7 +96,7 @@ shape = SubResource("SphereShape3D_sft3x")
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 light_color = Color(0.974363, 0.454579, 0.17104, 1)
-light_energy = 3.001
+light_energy = 3.0
 shadow_enabled = true
 omni_range = 2.655
 omni_attenuation = 3.13833
@@ -86,7 +110,7 @@ spot_range = 2.907
 
 [node name="ThrowAudioStream" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_ymd7g")
-volume_db = 5.0
+max_db = 6.0
 
 [node name="ExplodeAudioStream" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_4js4x")
@@ -102,4 +126,15 @@ mesh = SubResource("CylinderMesh_sxy0r")
 [node name="BounceAudioStream" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_gctgw")
 
+[node name="Fire" parent="." instance=ExtResource("5_qffps")]
+
+[node name="GPUParticles3D" parent="Fire" index="0"]
+lifetime = 1.0
+process_material = SubResource("ParticleProcessMaterial_xkm6i")
+
+[node name="Impact" parent="." instance=ExtResource("6_7773f")]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+
+[editable path="Fire"]
+[editable path="Impact"]
