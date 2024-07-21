@@ -110,10 +110,12 @@ spot_range = 2.907
 
 [node name="ThrowAudioStream" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_ymd7g")
+volume_db = 6.632
 max_db = 6.0
 
 [node name="ExplodeAudioStream" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_4js4x")
+volume_db = 7.461
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-5.46392e-09, 0.125, 0, -0.125, -5.46392e-09, 0, 0, 0, 0.125, 0.25, 0, 0)
@@ -125,6 +127,7 @@ mesh = SubResource("CylinderMesh_sxy0r")
 
 [node name="BounceAudioStream" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_gctgw")
+volume_db = 14.093
 
 [node name="Fire" parent="." instance=ExtResource("5_qffps")]
 
