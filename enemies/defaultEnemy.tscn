@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://cjt017b5ir3x0" path="res://enemies/defaultEnemy.tres" id="3_r45i0"]
 [ext_resource type="PackedScene" uid="uid://0payu0dnwm5h" path="res://misc/fire.tscn" id="4_ga5of"]
 [ext_resource type="AudioStream" uid="uid://br5ux4voetr0u" path="res://assets/sfx/burn.wav" id="5_ct1fd"]
-[ext_resource type="AudioStream" uid="uid://huasb0pyxb3b" path="res://assets/sfx/kill.wav" id="6_w5br7"]
+[ext_resource type="AudioStream" uid="uid://c1s6v77jsbjyi" path="res://assets/sfx/kill.wav" id="6_jl3jc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4wnn5"]
 resource_local_to_scene = true
@@ -49,7 +49,6 @@ scale_min = 0.5
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_32o24"]
 playback_mode = 2
 streams_count = 2
-stream_0/stream = ExtResource("6_w5br7")
 stream_0/weight = 1.0
 stream_1/stream = ExtResource("5_ct1fd")
 stream_1/weight = 1.0
@@ -91,5 +90,9 @@ process_material = SubResource("ParticleProcessMaterial_ia4ni")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_32o24")
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_jl3jc")
+volume_db = 10.0
 
 [editable path="Fire"]

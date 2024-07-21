@@ -47,6 +47,9 @@ func _process(delta):
 		time_until_death -= delta
 		$MeshInstance3D.get_surface_override_material(0).albedo_color.a = time_until_death/total_time_until_death
 		speed = default_speed * pow(time_until_death/total_time_until_death, 2.0)
+		if(time_until_death < 0.5):
+			if !$AudioStreamPlayer3D2.is_playing():
+				$AudioStreamPlayer3D2.play()
 		if(time_until_death < 1):
 			$Fire/GPUParticles3D.emitting = false
 		#$MeshInstance3D.get_surface_override_material(0).albedo_color.a = 0
