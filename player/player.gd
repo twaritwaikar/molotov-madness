@@ -73,3 +73,4 @@ func _throw_molotov(direction: Vector3, power: float):
 	molotov_instance.linear_velocity = direction.normalized() * power * 5.0
 	molotov_instance.linear_velocity.y = 1.0
 	molotov_instance.apply_impulse(direction * power)
+	$GruntAudioStream.play()
