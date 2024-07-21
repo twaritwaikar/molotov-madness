@@ -3,10 +3,12 @@ extends Node3D
 var time_to_reveal = 1
 var time_to_close = 2
 var is_closing = false
-var basic_global_position
+var basic_global_position_1
+var basic_global_position_2
 
 func _ready():
-	basic_global_position = $Camera3D.global_position
+	basic_global_position_1 = $MESH/MeshInstance3D.global_position
+	basic_global_position_2 = $MESH/MeshInstance3D2.global_position
 	
 	$WorldEnvironment.environment.volumetric_fog_enabled = true
 	$MeshInstance2D.hide()
@@ -25,8 +27,10 @@ func _process(delta):
 		
 	$WorldEnvironment.environment.sky_custom_fov += delta
 	
-	$Camera3D.global_position.x = basic_global_position.x + 0.02 * sin(time_to_reveal)
-	$Camera3D.global_position.y = basic_global_position.y + 0.02 * cos(time_to_reveal)
+	$MESH/MeshInstance3D.global_position.x = basic_global_position_1.x + 0.02 * sin(time_to_reveal)
+	$MESH/MeshInstance3D.global_position.y = basic_global_position_1.y + 0.02 * cos(time_to_reveal)
+	$MESH/MeshInstance3D2.global_position.x = basic_global_position_2.x + 0.02 * cos(time_to_reveal)
+	$MESH/MeshInstance3D2.global_position.y = basic_global_position_2.y + 0.02 * sin(time_to_reveal)
 	
 	if(Input.is_anything_pressed()):
 		if !is_closing and !$AudioStreamPlayer2.is_playing():
