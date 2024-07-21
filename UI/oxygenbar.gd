@@ -24,15 +24,10 @@ func _ready():
 #
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if no_of_molotvs<=0:
-		oxygen -= delta
-		_set_oxy(oxygen)
-	else:
-		## mp rate of oxygen decline
-		oxygen -= no_of_molotvs*delta*2
+	oxygen -= (3.5 + 5*State.molotovs)*delta
 	value = lerp(value, oxygen, 0.1)
 	if oxygen < 10:
-		
+		State.decrease_health_by(delta*5)
 		if Engine.get_frames_drawn() % 50 > 25:
 			modulate.a = lerp(modulate.a, 0.0, 0.1)
 			modulate.g = lerp(modulate.g, 0.0, 0.1) 
