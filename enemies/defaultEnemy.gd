@@ -28,7 +28,7 @@ func _physics_process(delta):
 			#rotate_y(randf_range(PI/2, 1.5*PI))
 			#velocity = ($moveTarget.position - position).normalized() * speed
 	if(enemy_type == "default"):
-		if(isHit) and !target.is_queued_for_deletion():
+		if(isHit) and target.is_inside_tree() and !target.is_queued_for_deletion():
 			velocity = target.position - position
 			velocity.y = 0
 	#print(velocity, target.position, position, target.position - position)
