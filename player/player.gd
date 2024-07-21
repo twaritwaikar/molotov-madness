@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 @export var throw_power = 10
 
+const default_footstep_time = 0.5 # seconds for 1 footstep
+var footstep_time = default_footstep_time
 const SPEED = 5.0
 var aiming = false
 var hold_duration = 0.0 # seconds
@@ -9,7 +11,7 @@ const MAX_HOLD = 1.0 # seconds
 var molotov_scene = preload("res://molotov/molotov.tscn")
 @onready var camera = get_parent().get_node("Camera3D")
 
-func _physics_process(delta):
+func _physics_process(delta):	
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var direction = (Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -37,6 +39,11 @@ func _input(event):
 			self.look_at(cursor_position)
 
 func _process(delta):
+	footstep_time -= delta
+	if footstep_time < 0 and !$WalkingAudioStream.is_playing() and !velocity.is_equal_approx(Vector3.ZERO):
+		$WalkingAudioStream.play()
+		footstep_time = default_footstep_time
+	
 	if aiming:
 		hold_duration += delta
 		clampf(hold_duration, 0.0, MAX_HOLD)

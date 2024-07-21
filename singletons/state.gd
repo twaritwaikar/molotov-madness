@@ -41,7 +41,7 @@ func decrease_health_by(value):
 		get_tree().change_scene_to_packed(levels[current_level])
 
 func molotov_hit_ground():
-	camera_shake.emit(0.5, 1)
+	camera_shake.emit(1.0, 0.3)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

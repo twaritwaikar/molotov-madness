@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://0payu0dnwm5h"]
 
-[ext_resource type="Material" uid="uid://6hxcgux8njif" path="res://assets/fire.tres" id="1_spapb"]
+[ext_resource type="Material" uid="uid://dvnt25y1gwxiw" path="res://assets/fire.tres" id="1_spapb"]
 
 [sub_resource type="Curve" id="Curve_jlahv"]
 min_value = -200.0
