@@ -1,7 +1,12 @@
 extends Node
 
 var levels =  [
-	preload("res://levels/level_1.tscn")
+	preload("res://levels/level_1.tscn"),
+	preload("res://levels/level_2.tscn"),
+	preload("res://levels/level_3.tscn"),
+	preload("res://levels/level_4.tscn"),
+	preload("res://levels/level_5.tscn"),
+	preload("res://MainMenu.tscn")
 ]
 var current_level = 0
 
@@ -54,6 +59,7 @@ func decrease_health_by(value):
 		switch_queued = true
 
 func success():
+	current_level += 1
 	turn_transition_on.emit(true)
 	switch_queued = true
 

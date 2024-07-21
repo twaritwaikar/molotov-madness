@@ -13,9 +13,14 @@ var molotov_scene = preload("res://molotov/molotov.tscn")
 
 func _ready():
 	State.player_hit.connect(_get_hit)
+	State.turn_transition_on.connect(_enable_transition)
 
 func _get_hit():
 	$HurtAudioStream.play()
+
+func _enable_transition(alive):
+	if not alive:
+		queue_free()
 
 func _physics_process(delta):	
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -42,7 +47,6 @@ func _input(event):
 		var to = from + camera.project_ray_normal(event.position) * 100
 		var cursor_position = Plane.PLANE_XZ.intersects_ray(from, to)
 		cursor_position -= Vector3(camera.position.x, 0.0, camera.position.z)
-		print(position)
 		if cursor_position:
 			self.look_at(cursor_position)
 

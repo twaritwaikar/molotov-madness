@@ -51,7 +51,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, -0.113)
 top_level = true
 
 [node name="MeshInstance3D" parent="SucessTransition" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 mesh = SubResource("TextMesh_0h8qe")
 
 [node name="FailureTransition" parent="." instance=ExtResource("2_hq10q")]

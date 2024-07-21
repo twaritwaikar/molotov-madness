@@ -1,0 +1,104 @@
+[gd_scene load_steps=11 format=3 uid="uid://cjhiu5wjvhm81"]
+
+[ext_resource type="PackedScene" uid="uid://cse1wtqs4legn" path="res://levels/world_environment.tscn" id="1_28wqd"]
+[ext_resource type="PackedScene" uid="uid://c3qimjdn87g68" path="res://levels/camera_3d.tscn" id="2_c431w"]
+[ext_resource type="PackedScene" uid="uid://y5tjhjgc0h4q" path="res://player/player.tscn" id="3_21hf4"]
+[ext_resource type="AudioStream" uid="uid://crw3r342xvh8q" path="res://assets/music/brostep-metal-fusion-with-polyrhythmic-elements-225089.mp3" id="4_n8gxg"]
+[ext_resource type="PackedScene" uid="uid://cqtl0yyf85es2" path="res://UI/HUD.tscn" id="5_53ran"]
+[ext_resource type="Script" path="res://levels/enemies.gd" id="6_62f05"]
+[ext_resource type="PackedScene" uid="uid://cg71r6xm5itpw" path="res://enemies/defaultEnemy.tscn" id="7_2ugbu"]
+[ext_resource type="PackedScene" uid="uid://bl7alpfbpakx6" path="res://levels/wall.tscn" id="8_fxlig"]
+[ext_resource type="PackedScene" uid="uid://drlhsw2mep2m7" path="res://levels/floor.tscn" id="9_jhpkm"]
+[ext_resource type="FontFile" uid="uid://narb4fy6m5eo" path="res://assets/fonts/DangerNightPersonalUse-owdl4.otf" id="10_q2kg0"]
+
+[node name="Level5" type="Node3D"]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("1_28wqd")]
+
+[node name="Camera3D" parent="." instance=ExtResource("2_c431w")]
+
+[node name="Player" parent="." instance=ExtResource("3_21hf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_n8gxg")
+autoplay = true
+bus = &"Music"
+
+[node name="HUG" parent="." instance=ExtResource("5_53ran")]
+
+[node name="Enemies" type="Node" parent="."]
+script = ExtResource("6_62f05")
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("7_2ugbu")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 2.4, -17.3)
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("7_2ugbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, -7.3)
+enemy_type = "crazy"
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("7_2ugbu")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3, 2.4, -17.3)
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource("7_2ugbu")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3, 2.4, -17.3)
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy5" parent="Enemies" instance=ExtResource("7_2ugbu")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6, 2.4, -17.3)
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy6" parent="Enemies" instance=ExtResource("7_2ugbu")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 6.03122, 2.4, -17.307)
+targetCharacter = NodePath("../../Player")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_top = -127.0
+offset_right = 637.0
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("10_q2kg0")
+theme_override_font_sizes/normal_font_size = 100
+text = "No Man's Land"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Island4" type="Node3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.5, 0, 0, 0, -0.35, -0.299999, 0, -25.2)
+
+[node name="Wall" parent="Island4" instance=ExtResource("8_fxlig")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.3, 1, 0.4)
+
+[node name="Wall2" parent="Island4" instance=ExtResource("8_fxlig")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 30.6, 1, 0.4)
+
+[node name="Wall5" parent="Island4" instance=ExtResource("8_fxlig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, -9, -30.1)
+
+[node name="Wall6" parent="Island4" instance=ExtResource("8_fxlig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 1, 29.9)
+
+[node name="Floor" parent="Island4" instance=ExtResource("9_jhpkm")]
+
+[node name="Island3" type="Node3D" parent="."]
+transform = Transform3D(0.35, 0, 0, 0, 0.5, 0, 0, 0, 0.35, 0, 0, 0)
+
+[node name="Wall" parent="Island3" instance=ExtResource("8_fxlig")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.3, 1, 0.4)
+
+[node name="Wall2" parent="Island3" instance=ExtResource("8_fxlig")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 30.6, 1, 0.4)
+
+[node name="Wall5" parent="Island3" instance=ExtResource("8_fxlig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, -5, -30.1)
+
+[node name="Wall6" parent="Island3" instance=ExtResource("8_fxlig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 1, 29.9)
+
+[node name="Floor" parent="Island3" instance=ExtResource("9_jhpkm")]

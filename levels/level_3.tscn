@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://cpjji7220o1is"]
+
+[ext_resource type="PackedScene" uid="uid://cse1wtqs4legn" path="res://levels/world_environment.tscn" id="1_d1561"]
+[ext_resource type="PackedScene" uid="uid://c3qimjdn87g68" path="res://levels/camera_3d.tscn" id="2_s6nje"]
+[ext_resource type="PackedScene" uid="uid://y5tjhjgc0h4q" path="res://player/player.tscn" id="3_utndy"]
+[ext_resource type="AudioStream" uid="uid://crw3r342xvh8q" path="res://assets/music/brostep-metal-fusion-with-polyrhythmic-elements-225089.mp3" id="4_o2q6b"]
+[ext_resource type="PackedScene" uid="uid://cqtl0yyf85es2" path="res://UI/HUD.tscn" id="5_emyxm"]
+[ext_resource type="Script" path="res://levels/enemies.gd" id="6_p5wt5"]
+[ext_resource type="PackedScene" uid="uid://cg71r6xm5itpw" path="res://enemies/defaultEnemy.tscn" id="7_xn4ef"]
+[ext_resource type="PackedScene" uid="uid://bl7alpfbpakx6" path="res://levels/wall.tscn" id="8_1sa3b"]
+[ext_resource type="PackedScene" uid="uid://drlhsw2mep2m7" path="res://levels/floor.tscn" id="9_u1etf"]
+[ext_resource type="FontFile" uid="uid://narb4fy6m5eo" path="res://assets/fonts/DangerNightPersonalUse-owdl4.otf" id="10_fh3ho"]
+
+[node name="Level3" type="Node3D"]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("1_d1561")]
+
+[node name="Camera3D" parent="." instance=ExtResource("2_s6nje")]
+
+[node name="Player" parent="." instance=ExtResource("3_utndy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, 8)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_o2q6b")
+autoplay = true
+bus = &"Music"
+
+[node name="HUG" parent="." instance=ExtResource("5_emyxm")]
+
+[node name="Enemies" type="Node" parent="."]
+script = ExtResource("6_p5wt5")
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("7_xn4ef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.4, -5)
+enemy_type = "crazy"
+targetCharacter = NodePath("../../Player")
+
+[node name="Architecture" type="Node3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Wall" parent="Architecture" instance=ExtResource("8_1sa3b")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.3, 1, 0.4)
+
+[node name="Wall2" parent="Architecture" instance=ExtResource("8_1sa3b")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 30.6, 1, 0.4)
+
+[node name="Wall5" parent="Architecture" instance=ExtResource("8_1sa3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 1, -30.1)
+
+[node name="Wall7" parent="Architecture" instance=ExtResource("8_1sa3b")]
+transform = Transform3D(1.00711, 0, -0.707107, 0, 1, 0, 1.00711, 0, 0.707107, 1.1, 1.2, -0.0999999)
+
+[node name="Wall6" parent="Architecture" instance=ExtResource("8_1sa3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 1, 29.9)
+
+[node name="Floor" parent="Architecture" instance=ExtResource("9_u1etf")]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_top = -127.0
+offset_right = 400.0
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("10_fh3ho")
+theme_override_font_sizes/normal_font_size = 100
+text = "Fast AF boiiiiiii"
+scroll_active = false
+autowrap_mode = 0

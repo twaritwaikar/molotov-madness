@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3yvgv3perxem"]
+[gd_scene load_steps=11 format=3 uid="uid://c3yvgv3perxem"]
 
 [ext_resource type="PackedScene" uid="uid://cse1wtqs4legn" path="res://levels/world_environment.tscn" id="1_usiop"]
 [ext_resource type="PackedScene" uid="uid://bl7alpfbpakx6" path="res://levels/wall.tscn" id="2_r0ddf"]
@@ -7,34 +7,18 @@
 [ext_resource type="AudioStream" uid="uid://crw3r342xvh8q" path="res://assets/music/brostep-metal-fusion-with-polyrhythmic-elements-225089.mp3" id="5_t62il"]
 [ext_resource type="PackedScene" uid="uid://cqtl0yyf85es2" path="res://UI/HUD.tscn" id="6_a444u"]
 [ext_resource type="PackedScene" uid="uid://cg71r6xm5itpw" path="res://enemies/defaultEnemy.tscn" id="7_cmop2"]
+[ext_resource type="Script" path="res://levels/enemies.gd" id="8_qpios"]
 [ext_resource type="PackedScene" uid="uid://drlhsw2mep2m7" path="res://levels/floor.tscn" id="8_vingj"]
+[ext_resource type="FontFile" uid="uid://narb4fy6m5eo" path="res://assets/fonts/DangerNightPersonalUse-owdl4.otf" id="10_l3r81"]
 
 [node name="Level1" type="Node3D"]
-
-[node name="Wall" parent="." instance=ExtResource("2_r0ddf")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.3, 1, 0.4)
-
-[node name="Wall2" parent="." instance=ExtResource("2_r0ddf")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 31.6, 1, 0.4)
-
-[node name="Wall3" parent="." instance=ExtResource("2_r0ddf")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 31.6, 1, -59.6)
-
-[node name="Wall4" parent="." instance=ExtResource("2_r0ddf")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.3, 1, -59.6)
-
-[node name="Wall5" parent="." instance=ExtResource("2_r0ddf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 1, -90.1)
-
-[node name="Wall6" parent="." instance=ExtResource("2_r0ddf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 13, 29.9)
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("1_usiop")]
 
 [node name="Camera3D" parent="." instance=ExtResource("3_yk3gd")]
 
 [node name="Player" parent="." instance=ExtResource("4_rxy13")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 9)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_t62il")
@@ -43,11 +27,40 @@ bus = &"Music"
 
 [node name="HUG" parent="." instance=ExtResource("6_a444u")]
 
-[node name="Enemy" parent="." instance=ExtResource("7_cmop2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -62)
-targetCharacter = NodePath("../Player")
+[node name="Enemies" type="Node" parent="."]
+script = ExtResource("8_qpios")
 
-[node name="Floor" parent="." instance=ExtResource("8_vingj")]
+[node name="Enemy" parent="Enemies" instance=ExtResource("7_cmop2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -7)
+targetCharacter = NodePath("../../Player")
 
-[node name="Floor2" parent="." instance=ExtResource("8_vingj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -60)
+[node name="Architecture" type="Node3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Wall" parent="Architecture" instance=ExtResource("2_r0ddf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.3, 1, 0.4)
+
+[node name="Wall2" parent="Architecture" instance=ExtResource("2_r0ddf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 30.6, 1, 0.4)
+
+[node name="Wall5" parent="Architecture" instance=ExtResource("2_r0ddf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 1, -30.1)
+
+[node name="Wall6" parent="Architecture" instance=ExtResource("2_r0ddf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 1, 29.9)
+
+[node name="Floor" parent="Architecture" instance=ExtResource("8_vingj")]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = -116.0
+offset_right = 393.0
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("10_l3r81")
+theme_override_font_sizes/normal_font_size = 100
+text = "WASD? Click!"
+scroll_active = false
+autowrap_mode = 0
