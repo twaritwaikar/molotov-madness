@@ -3,7 +3,13 @@ extends ProgressBar
 @onready var timer = $Timer
 #@onready var oxygenBar = $Oxygenbar
 
+var no_of_molotvs = 1: set = _set_molotov
+
+func _set_molotov(molotov):
+	no_of_molotvs = molotov
+
 var oxygen = 100: set = _set_oxy
+
 
 func _set_oxy(new_oxy):
 	oxygen = min(max_value, new_oxy)
@@ -27,6 +33,12 @@ func _ready():
 #
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if no_of_molotvs<=0:
+		oxygen -=1
+		_set_oxy(oxygen)
+	else:
+		## mp rate of oxygen decline
+		oxygen -= no_of_molotvs*0.02
 	
 	if oxygen < 10:
 		
@@ -42,4 +54,5 @@ func _process(delta):
 func _on_timer_timeout():
 	oxygen -=1
 	_set_oxy(oxygen)
+	
 	pass # Replace with function body.

@@ -19,4 +19,5 @@ show_percentage = false
 script = ExtResource("1_n7vk3")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
