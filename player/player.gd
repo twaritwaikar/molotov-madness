@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
-@export var throw_power = 15
+@export var throw_power = 10
 
-const SPEED = 10.0
+const SPEED = 5.0
 var aiming = false
 var hold_duration = 0.0 # seconds
 const MAX_HOLD = 1.0 # seconds
@@ -57,6 +57,6 @@ func _throw_molotov(direction: Vector3, power: float):
 	molotov_instance.position = transform.origin + get_parent().position
 	molotov_instance.position.y = 3.5
 	
-	molotov_instance.linear_velocity = direction.normalized() * power
-	molotov_instance.linear_velocity.y /= power
+	molotov_instance.linear_velocity = direction.normalized() * power * 5.0
+	molotov_instance.linear_velocity.y = 1.0
 	molotov_instance.apply_impulse(direction * power)
