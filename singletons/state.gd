@@ -9,6 +9,7 @@ var molotovs
 var oxygenFinish
 
 signal camera_shake(intensity, time)
+signal player_hit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,6 +34,7 @@ func is_oxygen_finished():
 	return oxygenFinish
 	
 func decrease_health_by(value):
+	player_hit.emit()
 	health -= value
 	if health < 0:
 		reset_variables()

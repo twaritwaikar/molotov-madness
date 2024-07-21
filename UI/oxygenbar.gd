@@ -1,6 +1,4 @@
 extends ProgressBar
-
-@onready var timer = $Timer
 #@onready var oxygenBar = $Oxygenbar
 
 var no_of_molotvs = 1: set = _set_molotov
@@ -13,12 +11,6 @@ var oxygen = 100: set = _set_oxy
 
 func _set_oxy(new_oxy):
 	oxygen = min(max_value, new_oxy)
-	value = oxygen
-	
-	
-	if oxygen < 0:
-		queue_free()
-		
 
 func _init_oxygen(_oxygen):
 	oxygen = _oxygen
@@ -28,18 +20,17 @@ func _init_oxygen(_oxygen):
 ## Called when the node enters the scene tree for the first time.
 func _ready():
 	_set_oxy(100)
-	timer.start()
 #
 #
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if no_of_molotvs<=0:
-		oxygen -=1
+		oxygen -= delta
 		_set_oxy(oxygen)
 	else:
 		## mp rate of oxygen decline
-		oxygen -= no_of_molotvs*0.02
-	
+		oxygen -= no_of_molotvs*delta*2
+	value = lerp(value, oxygen, 0.1)
 	if oxygen < 10:
 		
 		if Engine.get_frames_drawn() % 50 > 25:
@@ -50,9 +41,6 @@ func _process(delta):
 			modulate.a = lerp(modulate.a, 1.0, 0.1) 
 			modulate.g = lerp(modulate.g, 1.0, 0.1) 
 			modulate.b = lerp(modulate.b, 1.0, 0.1) 
+	elif oxygen <= 0 :
+		State.finish_oxygen()
 
-func _on_timer_timeout():
-	oxygen -=1
-	_set_oxy(oxygen)
-	
-	pass # Replace with function body.

@@ -17,7 +17,7 @@ roughness = 0.2
 [sub_resource type="BoxShape3D" id="BoxShape3D_xhjhl"]
 size = Vector3(29.14, 1, 27.87)
 
-[node name="TestGround" type="StaticBody3D"]
+[node name="TestGround2" type="StaticBody3D"]
 disable_mode = 1
 collision_mask = 8
 metadata/is_floor = true
@@ -58,9 +58,6 @@ sky_mode = 1
 
 [node name="Enemytesting" parent="." instance=ExtResource("3_kpqvl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.904484, 1.24548)
-
-[node name="Enemy" parent="Enemytesting" index="1"]
-speed = 15
 
 [node name="Enemy2" parent="Enemytesting" index="2"]
 speed = 15

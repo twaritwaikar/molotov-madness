@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqtl0yyf85es2"]
+[gd_scene load_steps=5 format=3 uid="uid://cqtl0yyf85es2"]
 
 [ext_resource type="Script" path="res://UI/HUD.gd" id="1_7eqeu"]
 [ext_resource type="PackedScene" uid="uid://dsobtb2o60p42" path="res://UI/oxygenbar.tscn" id="1_b3tps"]
+[ext_resource type="FontFile" uid="uid://narb4fy6m5eo" path="res://assets/fonts/DangerNightPersonalUse-owdl4.otf" id="2_l0ide"]
 [ext_resource type="PackedScene" uid="uid://c1xq60ojgi4d" path="res://UI/health_bar.tscn" id="3_adu3w"]
 
 [node name="HUG" type="CanvasLayer"]
@@ -13,18 +14,19 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -397.0
-offset_top = 76.0
+offset_top = 40.0
 offset_right = 398.0
-offset_bottom = 162.0
+offset_bottom = 126.0
 grow_horizontal = 2
 
 [node name="Oxygen" type="Label" parent="Panel"]
 layout_mode = 0
 offset_left = 21.0
-offset_top = 14.0
-offset_right = 94.0
-offset_bottom = 42.0
-theme_override_font_sizes/font_size = 20
+offset_top = -8.0
+offset_right = 110.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("2_l0ide")
+theme_override_font_sizes/font_size = 50
 text = "Oxygen
 "
 
@@ -48,20 +50,38 @@ offset_right = 1145.0
 offset_bottom = 643.0
 stretch_mode = 3
 
-[node name="Timer" type="Timer" parent="Panel"]
-wait_time = 2.0
-autostart = true
-
-[node name="HealthBar" parent="." instance=ExtResource("3_adu3w")]
-visible = false
-anchors_preset = 2
+[node name="Panel2" type="Panel" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 0.0
-offset_left = 29.0
-offset_top = -48.0
-offset_right = 600.0
-offset_bottom = -33.0
-grow_horizontal = 1
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -298.0
+offset_top = -94.0
+offset_right = 303.0
+offset_bottom = -22.0
+grow_horizontal = 2
 grow_vertical = 0
 
-[connection signal="timeout" from="Panel/Timer" to="Panel/Oxygenbar" method="_on_timer_timeout"]
+[node name="Health" type="Label" parent="Panel2"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = -8.0
+offset_right = 103.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("2_l0ide")
+theme_override_font_sizes/font_size = 50
+text = "Health
+"
+
+[node name="HealthBar" parent="Panel2" instance=ExtResource("3_adu3w")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+offset_left = -285.5
+offset_top = -28.0
+offset_right = 285.5
+offset_bottom = -13.0
+grow_vertical = 0

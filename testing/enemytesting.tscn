@@ -15,19 +15,16 @@ transform = Transform3D(1, 0, 0, 0, 0.0533991, 0.998573, 0, -0.998573, 0.0533991
 [node name="Enemy" parent="." instance=ExtResource("1_7tphr")]
 transform = Transform3D(0.722364, 0, -0.691513, 0, 1, 0, 0.691513, 0, 0.722364, 0.562892, 0.594502, 0.711669)
 axis_lock_linear_y = true
-speed = 15.0
 enemy_type = "crazy"
 
 [node name="Enemy2" parent="." instance=ExtResource("1_7tphr")]
 transform = Transform3D(-0.70581, 0, -0.708401, 0, 1, 0, 0.708401, 0, -0.70581, 0.562892, 0.594502, -7.98463)
 axis_lock_linear_y = true
-speed = 5.0
 enemy_type = "crazy"
 
 [node name="Enemy3" parent="." instance=ExtResource("1_7tphr")]
 transform = Transform3D(-0.0620589, 0, 0.998073, 0, 1, 0, -0.998073, 0, -0.0620589, -7.49198, 0.594502, -3.88368)
 axis_lock_linear_y = true
-speed = 10.0
 enemy_type = "crazy"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]

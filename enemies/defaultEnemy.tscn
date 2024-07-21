@@ -53,9 +53,9 @@ stream_0/weight = 1.0
 stream_1/stream = ExtResource("5_ct1fd")
 stream_1/weight = 1.0
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a4ebq"]
-radius = 1.25486
-height = 2.92763
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bxupk"]
+radius = 0.850003
+height = 3.10197
 
 [node name="Enemy" type="CharacterBody3D"]
 disable_mode = 2
@@ -100,9 +100,12 @@ stream = ExtResource("6_jl3jc")
 volume_db = 10.0
 
 [node name="Area3D" type="Area3D" parent="."]
-collision_mask = 4
+disable_mode = 2
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("CapsuleShape3D_a4ebq")
+shape = SubResource("CapsuleShape3D_bxupk")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]
 
 [editable path="Fire"]

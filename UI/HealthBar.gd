@@ -10,14 +10,12 @@ func _set_health(new_health):
 	var prev_health = health
 	health = min(max_value, new_health)
 	value = health
-	
-	if health<0:
-		queue_free()
-	
-	if health<prev_health:
-		timer.start()
-	else:
-		damageBar.value = health
+	#
+	#
+	#if health<prev_health:
+		#timer.start()
+	#else:
+		#damageBar.value = health
 	
 	
 
@@ -31,11 +29,19 @@ func init_health(_health):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	State.player_hit.connect(player_hit)
 	pass # Replace with function body.
 
+func player_hit():
+	get_parent().modulate.g = 0
+	get_parent().modulate.b = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	_set_health(State.health)
+	$DamageBar.value = lerp($DamageBar.value, value, 0.1)
+	get_parent().modulate.g = lerp(get_parent().modulate.g, 1.0, 0.05)
+	get_parent().modulate.b = lerp(get_parent().modulate.b, 1.0, 0.05)
 	pass
 
 
