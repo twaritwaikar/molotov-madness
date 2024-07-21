@@ -1,4 +1,4 @@
-[gd_resource type="Environment" load_steps=4 format=3 uid="uid://dv45nrn10x121"]
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://dh1glnn0jxto8"]
 
 [ext_resource type="Texture2D" uid="uid://d1c82o6iu2yjy" path="res://assets/images/6484259.jpg" id="1_66icc"]
 
@@ -12,9 +12,9 @@ sky_material = SubResource("PanoramaSkyMaterial_omqsj")
 background_mode = 2
 sky = SubResource("Sky_5u52a")
 sky_rotation = Vector3(1.82736, -1.59872, 0.200713)
-ambient_light_source = 3
-ambient_light_color = Color(0.453176, 0.150271, 0.650682, 1)
-ambient_light_energy = 0.5
+ambient_light_source = 2
+ambient_light_color = Color(0.903389, 0.822551, 0.98354, 1)
+ambient_light_energy = 2.01
 ssr_enabled = true
 ssil_enabled = true
 sdfgi_enabled = true

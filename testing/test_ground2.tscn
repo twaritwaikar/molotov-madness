@@ -56,12 +56,6 @@ disable_mode = 1
 collision_mask = 8
 metadata/is_floor = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(32.7683, 0, 0, 0, 1.25815, 0, 0, 0, 38.2307, -1.91837, -0.5, 0)
-gi_mode = 2
-mesh = SubResource("BoxMesh_r1p8b")
-surface_material_override/0 = SubResource("StandardMaterial3D_4xdgu")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_xhjhl")
