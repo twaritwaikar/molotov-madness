@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbdlossn2825m"]
+[gd_scene load_steps=7 format=3 uid="uid://cbdlossn2825m"]
 
 [ext_resource type="PackedScene" uid="uid://y5tjhjgc0h4q" path="res://player/player.tscn" id="1_y76fb"]
 [ext_resource type="Script" path="res://testing/camera.gd" id="2_qx1k0"]
+[ext_resource type="PackedScene" uid="uid://cqtl0yyf85es2" path="res://UI/HUD.tscn" id="2_u4k40"]
 [ext_resource type="PackedScene" uid="uid://bckw18bbkkp3m" path="res://testing/enemytesting.tscn" id="3_bo2uq"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_r1p8b"]
@@ -22,6 +23,8 @@ disabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_y76fb")]
 
+[node name="Hud" parent="." instance=ExtResource("2_u4k40")]
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -4.555, 43.955, 47)
 current = true
@@ -31,7 +34,7 @@ script = ExtResource("2_qx1k0")
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Camera3D"]
 
 [node name="DebugCamera" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7, 5, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.08165e-12, 5, 2.08165e-12)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 0, 0)
