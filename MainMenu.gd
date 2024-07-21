@@ -19,7 +19,7 @@ func _ready():
 	$MESH.show()
 	$MESH2.show()
 
-func _process(delta):
+func _process(delta):	
 	time_to_reveal -= delta
 
 	if time_to_reveal < 0:
