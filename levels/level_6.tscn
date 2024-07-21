@@ -1,0 +1,233 @@
+[gd_scene load_steps=11 format=3 uid="uid://c0qkfixknkdo0"]
+
+[ext_resource type="PackedScene" uid="uid://cse1wtqs4legn" path="res://levels/world_environment.tscn" id="1_jrc4k"]
+[ext_resource type="PackedScene" uid="uid://c3qimjdn87g68" path="res://levels/camera_3d.tscn" id="2_e051n"]
+[ext_resource type="PackedScene" uid="uid://y5tjhjgc0h4q" path="res://player/player.tscn" id="3_a771a"]
+[ext_resource type="AudioStream" uid="uid://crw3r342xvh8q" path="res://assets/music/brostep-metal-fusion-with-polyrhythmic-elements-225089.mp3" id="4_1h0jn"]
+[ext_resource type="PackedScene" uid="uid://cqtl0yyf85es2" path="res://UI/HUD.tscn" id="5_2okk8"]
+[ext_resource type="Script" path="res://levels/enemies.gd" id="6_fo6xq"]
+[ext_resource type="PackedScene" uid="uid://cg71r6xm5itpw" path="res://enemies/defaultEnemy.tscn" id="7_oeoul"]
+[ext_resource type="FontFile" uid="uid://narb4fy6m5eo" path="res://assets/fonts/DangerNightPersonalUse-owdl4.otf" id="8_q4vkp"]
+[ext_resource type="PackedScene" uid="uid://bl7alpfbpakx6" path="res://levels/wall.tscn" id="9_wpkyh"]
+[ext_resource type="PackedScene" uid="uid://drlhsw2mep2m7" path="res://levels/floor.tscn" id="10_52vso"]
+
+[node name="Level1" type="Node3D"]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("1_jrc4k")]
+
+[node name="Camera3D" parent="." instance=ExtResource("2_e051n")]
+
+[node name="Player" parent="." instance=ExtResource("3_a771a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_1h0jn")
+autoplay = true
+bus = &"Music"
+
+[node name="HUG" parent="." instance=ExtResource("5_2okk8")]
+
+[node name="Enemies" type="Node" parent="."]
+script = ExtResource("6_fo6xq")
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("7_oeoul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -21)
+speed = 5
+enemy_type = "crazy"
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("7_oeoul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -19)
+speed = 5
+enemy_type = "crazy"
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("7_oeoul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -21)
+speed = 5
+enemy_type = "crazy"
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource("7_oeoul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -17)
+speed = 5
+enemy_type = "crazy"
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy5" parent="Enemies" instance=ExtResource("7_oeoul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -15)
+speed = 5
+enemy_type = "crazy"
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy6" parent="Enemies" instance=ExtResource("7_oeoul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -14)
+speed = 5
+enemy_type = "crazy"
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy7" parent="Enemies" instance=ExtResource("7_oeoul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -14)
+speed = 5
+enemy_type = "crazy"
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy8" parent="Enemies" instance=ExtResource("7_oeoul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -15)
+speed = 5
+enemy_type = "crazy"
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy9" parent="Enemies" instance=ExtResource("7_oeoul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -17)
+speed = 5
+enemy_type = "crazy"
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy10" parent="Enemies" instance=ExtResource("7_oeoul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -20)
+speed = 5
+enemy_type = "crazy"
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy11" parent="Enemies" instance=ExtResource("7_oeoul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -18)
+speed = 5
+enemy_type = "crazy"
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy12" parent="Enemies" instance=ExtResource("7_oeoul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -18)
+speed = 5
+enemy_type = "crazy"
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy13" parent="Enemies" instance=ExtResource("7_oeoul")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.6667, 2, -21.5)
+speed = 5
+enemy_type = "crazy"
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy14" parent="Enemies" instance=ExtResource("7_oeoul")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.6667, 2, -20.5)
+speed = 5
+enemy_type = "crazy"
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy15" parent="Enemies" instance=ExtResource("7_oeoul")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.6667, 2, -18.5)
+speed = 5
+enemy_type = "crazy"
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy16" parent="Enemies" instance=ExtResource("7_oeoul")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.66667, 2, -18.5)
+speed = 5
+enemy_type = "crazy"
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy17" parent="Enemies" instance=ExtResource("7_oeoul")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.66667, 2, -21.5)
+speed = 5
+enemy_type = "crazy"
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy18" parent="Enemies" instance=ExtResource("7_oeoul")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.66667, 2, -18.5)
+speed = 5
+enemy_type = "crazy"
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy19" parent="Enemies" instance=ExtResource("7_oeoul")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.66667, 2, -21.5)
+speed = 5
+enemy_type = "crazy"
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy20" parent="Enemies" instance=ExtResource("7_oeoul")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.66667, 2, -16.5)
+speed = 5
+enemy_type = "crazy"
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy21" parent="Enemies" instance=ExtResource("7_oeoul")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.66667, 2, -16.5)
+speed = 5
+enemy_type = "crazy"
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy22" parent="Enemies" instance=ExtResource("7_oeoul")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.6667, 2, -16.5)
+speed = 5
+enemy_type = "crazy"
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy23" parent="Enemies" instance=ExtResource("7_oeoul")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.66667, 2, -21.5)
+speed = 5
+enemy_type = "crazy"
+targetCharacter = NodePath("../../Player")
+
+[node name="Enemy24" parent="Enemies" instance=ExtResource("7_oeoul")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.66667, 2, -21.5)
+speed = 5
+enemy_type = "crazy"
+targetCharacter = NodePath("../../Player")
+
+[node name="Architecture" type="Node3D" parent="."]
+transform = Transform3D(0.165, 0, 0, 0, 0.165, 0, 0, 0, 0.165, 0, 0, 0)
+
+[node name="Wall" parent="Architecture" instance=ExtResource("9_wpkyh")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.3, 1, 0.4)
+
+[node name="Wall2" parent="Architecture" instance=ExtResource("9_wpkyh")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 30.6, 1, 0.4)
+
+[node name="Wall6" parent="Architecture" instance=ExtResource("9_wpkyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 1, 29.9)
+
+[node name="Floor" parent="Architecture" instance=ExtResource("10_52vso")]
+
+[node name="Wall3" parent="Architecture" instance=ExtResource("9_wpkyh")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 30.5, 1, -59.05)
+
+[node name="Wall4" parent="Architecture" instance=ExtResource("9_wpkyh")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -29.4, 1, -59.05)
+
+[node name="Floor2" parent="Architecture" instance=ExtResource("10_52vso")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.2, 0, -58.65)
+
+[node name="Wall8" parent="Architecture" instance=ExtResource("9_wpkyh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -29.4, 1, -119.05)
+
+[node name="Wall9" parent="Architecture" instance=ExtResource("9_wpkyh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0999985, 1, -148.55)
+
+[node name="Floor3" parent="Architecture" instance=ExtResource("10_52vso")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.2, 0, -118.65)
+
+[node name="Wall7" parent="Architecture" instance=ExtResource("9_wpkyh")]
+transform = Transform3D(1, 0, -5.3829e-15, 0, 1, 0, 5.3829e-15, 0, 1, 59.9917, 1, -88.5462)
+
+[node name="Wall10" parent="Architecture" instance=ExtResource("9_wpkyh")]
+transform = Transform3D(1, 0, -5.3829e-15, 0, 1, 0, 5.3829e-15, 0, 1, 59.9917, 1, -148.446)
+
+[node name="Wall11" parent="Architecture" instance=ExtResource("9_wpkyh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 89.4917, 1, -118.946)
+
+[node name="Floor4" parent="Architecture" instance=ExtResource("10_52vso")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 59.5917, 0, -117.846)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = -116.0
+offset_right = 393.0
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("8_q4vkp")
+theme_override_font_sizes/normal_font_size = 100
+text = "L for ?"
+scroll_active = false
+autowrap_mode = 0
