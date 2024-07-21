@@ -32,7 +32,7 @@ func _process(delta):
 	$MESH/MeshInstance3D2.global_position.x = basic_global_position_2.x + 0.02 * cos(time_to_reveal)
 	$MESH/MeshInstance3D2.global_position.y = basic_global_position_2.y + 0.02 * sin(time_to_reveal)
 	
-	if(Input.is_anything_pressed()):
+	if(Input.is_action_just_pressed("start")):
 		if !is_closing and !$AudioStreamPlayer2.is_playing():
 			$AudioStreamPlayer2.play()
 		is_closing = true

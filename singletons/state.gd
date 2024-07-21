@@ -57,5 +57,7 @@ func success():
 	switch_queued = true
 
 func molotov_hit_ground():
-	camera_shake.emit(0.5, 1)
-
+	camera_shake.emit(1.0, 0.3)
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass

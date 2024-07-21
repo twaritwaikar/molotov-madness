@@ -8,8 +8,10 @@
 [node name="HUG" type="CanvasLayer"]
 follow_viewport_enabled = true
 script = ExtResource("1_7eqeu")
+metadata/_edit_vertical_guides_ = [578.0]
 
 [node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -20,11 +22,15 @@ offset_bottom = 126.0
 grow_horizontal = 2
 
 [node name="Oxygen" type="Label" parent="Panel"]
-layout_mode = 0
-offset_left = 21.0
-offset_top = -8.0
-offset_right = 110.0
-offset_bottom = 43.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -39.5
+offset_top = 27.0
+offset_right = 49.5
+offset_bottom = 78.0
+grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_l0ide")
 theme_override_font_sizes/font_size = 50
 text = "Oxygen
@@ -38,9 +44,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -376.5
-offset_top = 1.0
+offset_top = -46.0
 offset_right = 372.5
-offset_bottom = 26.0
+offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -51,6 +57,7 @@ offset_bottom = 643.0
 stretch_mode = 3
 
 [node name="Panel2" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -64,15 +71,18 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Health" type="Label" parent="Panel2"]
-layout_mode = 0
-offset_left = 17.0
-offset_top = -8.0
-offset_right = 103.0
-offset_bottom = 43.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.5
+offset_top = -31.0
+offset_right = 78.5
+offset_bottom = 45.0
+grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_l0ide")
-theme_override_font_sizes/font_size = 50
-text = "Health
-"
+theme_override_font_sizes/font_size = 60
+text = "Health"
 
 [node name="HealthBar" parent="Panel2" instance=ExtResource("3_adu3w")]
 layout_mode = 1

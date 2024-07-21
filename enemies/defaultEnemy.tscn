@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cg71r6xm5itpw"]
+[gd_scene load_steps=18 format=3 uid="uid://cg71r6xm5itpw"]
 
 [ext_resource type="Script" path="res://enemies/defaultEnemy.gd" id="1_g73ax"]
 [ext_resource type="ArrayMesh" uid="uid://d2jnf0g7t4ofm" path="res://assets/models/enemy.obj" id="2_cwkhw"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://0payu0dnwm5h" path="res://misc/fire.tscn" id="4_ga5of"]
 [ext_resource type="AudioStream" uid="uid://br5ux4voetr0u" path="res://assets/sfx/burn.wav" id="5_ct1fd"]
 [ext_resource type="AudioStream" uid="uid://c1s6v77jsbjyi" path="res://assets/sfx/kill.wav" id="6_jl3jc"]
+[ext_resource type="AudioStream" uid="uid://bal15nw0qjlqe" path="res://assets/sfx/enemy_hurt.wav" id="7_xbty5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4wnn5"]
 resource_local_to_scene = true
@@ -48,14 +49,19 @@ scale_min = 0.5
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_32o24"]
 playback_mode = 2
-streams_count = 2
+streams_count = 1
+stream_0/stream = ExtResource("5_ct1fd")
 stream_0/weight = 1.0
-stream_1/stream = ExtResource("5_ct1fd")
-stream_1/weight = 1.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bxupk"]
 radius = 0.850003
 height = 3.10197
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ogej3"]
+random_pitch = 2.37
+streams_count = 1
+stream_0/stream = ExtResource("7_xbty5")
+stream_0/weight = 1.0
 
 [node name="Enemy" type="CharacterBody3D"]
 disable_mode = 2
@@ -92,12 +98,13 @@ one_shot = false
 explosiveness = 0.0
 process_material = SubResource("ParticleProcessMaterial_ia4ni")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="BurnAudioStream" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_32o24")
+volume_db = 20.725
 
-[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
+[node name="DeathAudioStream" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_jl3jc")
-volume_db = 10.0
+volume_db = 23.264
 
 [node name="Area3D" type="Area3D" parent="."]
 disable_mode = 2
@@ -105,6 +112,9 @@ collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("CapsuleShape3D_bxupk")
+
+[node name="HurtAudioStream" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_ogej3")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]
 

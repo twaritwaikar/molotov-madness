@@ -48,9 +48,11 @@ func _process(delta):
 		$MeshInstance3D.get_surface_override_material(0).albedo_color.a = time_until_death/total_time_until_death
 		speed = default_speed * pow(time_until_death/total_time_until_death, 2.0)
 		if(time_until_death < 0.5):
-			if !$AudioStreamPlayer3D2.is_playing():
-				$AudioStreamPlayer3D2.play()
-		if(time_until_death < 1):
+			if !$DeathAudioStream.is_playing():
+				$DeathAudioStream.play()
+		if(time_until_death < 1.0):
+			if !$HurtAudioStream.is_playing():
+				$HurtAudioStream.play()
 			$Fire/GPUParticles3D.emitting = false
 		#$MeshInstance3D.get_surface_override_material(0).albedo_color.a = 0
 		#$MeshInstance3D.surface_material_override.albedo_color.a = lerp($MeshInstance3D.surface_material_override.albedo_color.a, 0, 0.05)
@@ -63,8 +65,8 @@ func is_burning():
 
 func burn():
 	$Fire/GPUParticles3D.emitting = true
-	if !$AudioStreamPlayer3D.is_playing():
-		$AudioStreamPlayer3D.play()
+	if !$BurnAudioStream.is_playing():
+		$BurnAudioStream.play()
 	isHit = true
 
 func _on_body_entered(body):

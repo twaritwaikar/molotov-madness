@@ -1,8 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://y5tjhjgc0h4q"]
+[gd_scene load_steps=22 format=3 uid="uid://y5tjhjgc0h4q"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_wi8va"]
 [ext_resource type="ArrayMesh" uid="uid://d1o5aovi2voik" path="res://assets/models/player.obj" id="2_4vhpj"]
 [ext_resource type="Material" uid="uid://dvnt25y1gwxiw" path="res://assets/fire.tres" id="3_3twbr"]
+[ext_resource type="AudioStream" uid="uid://ceviklhfh53g2" path="res://assets/sfx/footstep_1.wav" id="4_sfupr"]
+[ext_resource type="AudioStream" uid="uid://ccv4vef875f5" path="res://assets/sfx/footstep_2.wav" id="5_g2va8"]
+[ext_resource type="AudioStream" uid="uid://br8lmwl8ubw7a" path="res://assets/sfx/footstep_3.wav" id="6_p0h7d"]
+[ext_resource type="AudioStream" uid="uid://piijvf4f33j5" path="res://assets/sfx/footstep_4.wav" id="7_di1pu"]
+[ext_resource type="AudioStream" uid="uid://goltmqdasu02" path="res://assets/sfx/player_hurt.wav" id="8_2mk7h"]
+[ext_resource type="AudioStream" uid="uid://dw00eu2lnepdk" path="res://assets/sfx/throw_grunt_1.wav" id="9_usgku"]
+[ext_resource type="AudioStream" uid="uid://bet5pm3lpxt6e" path="res://assets/sfx/throw_grunt_2.wav" id="10_f4slb"]
+[ext_resource type="AudioStream" uid="uid://rqpar2xh1e5s" path="res://assets/sfx/throw_grunt_3.wav" id="11_gu6bf"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1i4ys"]
 
@@ -41,6 +49,33 @@ scale_max = 0.7
 
 [sub_resource type="SphereMesh" id="SphereMesh_2n175"]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sineh"]
+streams_count = 4
+stream_0/stream = ExtResource("4_sfupr")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("5_g2va8")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("6_p0h7d")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("7_di1pu")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_v6tbl"]
+random_pitch = 1.72
+streams_count = 1
+stream_0/stream = ExtResource("8_2mk7h")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tnhgh"]
+random_pitch = 1.3
+streams_count = 3
+stream_0/stream = ExtResource("9_usgku")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("10_f4slb")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("11_gu6bf")
+stream_2/weight = 1.0
+
 [node name="Player" type="CharacterBody3D"]
 disable_mode = 2
 collision_layer = 4
@@ -77,3 +112,15 @@ lifetime = 0.18
 explosiveness = 0.03
 process_material = SubResource("ParticleProcessMaterial_vn6h5")
 draw_pass_1 = SubResource("SphereMesh_2n175")
+
+[node name="WalkingAudioStream" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_sineh")
+volume_db = 40.0
+
+[node name="HurtAudioStream" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_v6tbl")
+pitch_scale = 0.5
+
+[node name="GruntAudioStream" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_tnhgh")
+volume_db = 60.001
