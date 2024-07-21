@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cg71r6xm5itpw"]
+[gd_scene load_steps=16 format=3 uid="uid://cg71r6xm5itpw"]
 
 [ext_resource type="Script" path="res://enemies/defaultEnemy.gd" id="1_g73ax"]
 [ext_resource type="ArrayMesh" uid="uid://d2jnf0g7t4ofm" path="res://assets/models/enemy.obj" id="2_cwkhw"]
@@ -53,6 +53,10 @@ stream_0/weight = 1.0
 stream_1/stream = ExtResource("5_ct1fd")
 stream_1/weight = 1.0
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a4ebq"]
+radius = 1.25486
+height = 2.92763
+
 [node name="Enemy" type="CharacterBody3D"]
 disable_mode = 2
 collision_layer = 2
@@ -94,5 +98,11 @@ stream = SubResource("AudioStreamRandomizer_32o24")
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_jl3jc")
 volume_db = 10.0
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CapsuleShape3D_a4ebq")
 
 [editable path="Fire"]

@@ -18,6 +18,10 @@ boot_splash/show_image=false
 boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
+[autoload]
+
+State="*res://singletons/state.gd"
+
 [display]
 
 window/size/mode=3

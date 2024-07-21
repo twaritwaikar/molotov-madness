@@ -66,3 +66,10 @@ func burn():
 	if !$AudioStreamPlayer3D.is_playing():
 		$AudioStreamPlayer3D.play()
 	isHit = true
+
+func _on_body_entered(body):
+	if body.get_meta("is_player", false) == true:
+		if is_burning():
+			State.decrease_health_by(5)
+		else:
+			State.decrease_health_by(3)

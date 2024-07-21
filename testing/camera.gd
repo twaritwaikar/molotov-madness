@@ -10,9 +10,8 @@ var shake_until = 0
 var shake_intensity = 0
 var shaken_total = Vector3(0, 0, 0)
 
-#func _input(event):
-	#if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		#shake(0.5, 0.5)
+func _ready():
+	State.camera_shake.connect(shake)
 
 func _process(delta):
 	# Follow player on X-Z plane

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_wi8va"]
 [ext_resource type="ArrayMesh" uid="uid://d1o5aovi2voik" path="res://assets/models/player.obj" id="2_4vhpj"]
-[ext_resource type="Material" uid="uid://dvnt25y1gwxiw" path="res://assets/fire.tres" id="3_3twbr"]
+[ext_resource type="Material" uid="uid://6hxcgux8njif" path="res://assets/fire.tres" id="3_3twbr"]
 [ext_resource type="PackedScene" uid="uid://c1xq60ojgi4d" path="res://UI/health_bar.tscn" id="4_52mma"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1i4ys"]
@@ -47,6 +47,7 @@ disable_mode = 2
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_wi8va")
+metadata/is_player = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
