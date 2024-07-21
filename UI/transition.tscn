@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://bj68evnhysjuh"]
+
+[ext_resource type="Script" path="res://UI/transition.gd" id="1_l2ppl"]
+[ext_resource type="FontFile" uid="uid://narb4fy6m5eo" path="res://assets/fonts/DangerNightPersonalUse-owdl4.otf" id="1_o0hjm"]
+[ext_resource type="Shader" path="res://misc/fire.gdshader" id="2_r2y1f"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_iko4k"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cxxiy"]
+noise = SubResource("FastNoiseLite_iko4k")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_50y3s"]
+render_priority = 0
+shader = ExtResource("2_r2y1f")
+shader_parameter/root_color = Vector4(1, 0.75, 0.3, 1)
+shader_parameter/tip_color = Vector4(1, 0.03, 0.001, 1)
+shader_parameter/fire_alpha = 1.0
+shader_parameter/fire_speed = Vector2(0, 1)
+shader_parameter/fire_aperture = 0.22
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_cxxiy")
+
+[sub_resource type="TextMesh" id="TextMesh_nof4t"]
+material = SubResource("ShaderMaterial_50y3s")
+text = "AREA 
+CLEARED"
+font = ExtResource("1_o0hjm")
+font_size = 50
+depth = 0.1
+
+[node name="Transition" type="Node3D"]
+script = ExtResource("1_l2ppl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("TextMesh_nof4t")

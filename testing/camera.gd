@@ -10,7 +10,10 @@ var shake_until = 0
 var shake_intensity = 0
 var shaken_total = Vector3(0, 0, 0)
 
+var transition = false
+
 func _ready():
+	State.turn_transition_on.connect(enable_transition)
 	State.camera_shake.connect(shake)
 
 func _process(delta):
@@ -21,10 +24,14 @@ func _process(delta):
 	# Speed zoom out effect in Y axis
 	var speed_fear = get_parent().get_node("Player").velocity.length() * speed_fear_modifier
 	var target_camera_height = camera_height * (1 + speed_fear)
-	self.position.y = lerp(self.position.y, target_camera_height, 0.01)
+	if(transition):
+		target_camera_height = $SucessTransition.global_position.y + 2
+		translate(-shaken_total)
+		shaken_total -= shaken_total
+	self.position.y = lerp(self.position.y, target_camera_height, 0.1)
 	
 	
-	if(shake_until > 0):
+	if(shake_until > 0 && not transition):
 		#var shake_by = randf_range(0, PI/50)*shake_intensity
 		var shake_by = Vector3(shake_intensity*shake_until*randi_range(-1, 1), 0, shake_intensity*shake_until*randi_range(-1, 1))
 		translate(shake_by)
@@ -39,3 +46,8 @@ func _process(delta):
 func shake(intensity, time):
 	shake_until = time
 	shake_intensity = intensity
+
+func enable_transition(success):
+	transition = true
+	$SucessTransition.visible = success
+	$FailureTransition.visible = not success
