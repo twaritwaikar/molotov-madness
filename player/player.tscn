@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://y5tjhjgc0h4q"]
+[gd_scene load_steps=18 format=3 uid="uid://y5tjhjgc0h4q"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_wi8va"]
 [ext_resource type="ArrayMesh" uid="uid://d1o5aovi2voik" path="res://assets/models/player.obj" id="2_4vhpj"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://ccv4vef875f5" path="res://assets/sfx/footstep_2.wav" id="5_g2va8"]
 [ext_resource type="AudioStream" uid="uid://br8lmwl8ubw7a" path="res://assets/sfx/footstep_3.wav" id="6_p0h7d"]
 [ext_resource type="AudioStream" uid="uid://piijvf4f33j5" path="res://assets/sfx/footstep_4.wav" id="7_di1pu"]
+[ext_resource type="AudioStream" uid="uid://goltmqdasu02" path="res://assets/sfx/player_hurt.wav" id="8_2mk7h"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1i4ys"]
 
@@ -56,6 +57,12 @@ stream_2/weight = 1.0
 stream_3/stream = ExtResource("7_di1pu")
 stream_3/weight = 1.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_v6tbl"]
+random_pitch = 1.72
+streams_count = 1
+stream_0/stream = ExtResource("8_2mk7h")
+stream_0/weight = 1.0
+
 [node name="Player" type="CharacterBody3D"]
 disable_mode = 2
 collision_layer = 4
@@ -96,3 +103,7 @@ draw_pass_1 = SubResource("SphereMesh_2n175")
 [node name="WalkingAudioStream" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_sineh")
 volume_db = 40.0
+
+[node name="HurtAudioStream" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_v6tbl")
+pitch_scale = 0.5

@@ -11,6 +11,12 @@ const MAX_HOLD = 1.0 # seconds
 var molotov_scene = preload("res://molotov/molotov.tscn")
 @onready var camera = get_parent().get_node("Camera3D")
 
+func _ready():
+	State.player_hit.connect(_get_hit)
+
+func _get_hit():
+	$HurtAudioStream.play()
+
 func _physics_process(delta):	
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var direction = (Vector3(input_dir.x, 0, input_dir.y)).normalized()
