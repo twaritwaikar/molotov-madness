@@ -59,6 +59,12 @@ sky_mode = 1
 [node name="Enemytesting" parent="." instance=ExtResource("3_kpqvl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.904484, 1.24548)
 
+[node name="Enemy2" parent="Enemytesting" index="2"]
+speed = 15
+
+[node name="Enemy3" parent="Enemytesting" index="3"]
+speed = 15
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("4_geqie")
 

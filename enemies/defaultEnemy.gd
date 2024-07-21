@@ -70,6 +70,6 @@ func burn():
 func _on_body_entered(body):
 	if body.get_meta("is_player", false) == true:
 		if is_burning():
-			State.decrease_health_by(5)
+			State.decrease_health_by(20)
 		else:
-			State.decrease_health_by(3)
+			State.decrease_health_by(10)
