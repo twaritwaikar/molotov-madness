@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://c3qimjdn87g68"]
+
+[ext_resource type="Script" path="res://testing/camera.gd" id="1_sc3oh"]
+[ext_resource type="PackedScene" uid="uid://bj68evnhysjuh" path="res://UI/transition.tscn" id="2_hq10q"]
+[ext_resource type="FontFile" uid="uid://narb4fy6m5eo" path="res://assets/fonts/DangerNightPersonalUse-owdl4.otf" id="3_tbo5t"]
+[ext_resource type="Shader" path="res://misc/fire.gdshader" id="4_0lq5e"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_iko4k"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cxxiy"]
+noise = SubResource("FastNoiseLite_iko4k")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_50y3s"]
+render_priority = 0
+shader = ExtResource("4_0lq5e")
+shader_parameter/root_color = Vector4(1, 0.75, 0.3, 1)
+shader_parameter/tip_color = Vector4(1, 0.03, 0.001, 1)
+shader_parameter/fire_alpha = 1.0
+shader_parameter/fire_speed = Vector2(0, 1)
+shader_parameter/fire_aperture = 0.22
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_cxxiy")
+
+[sub_resource type="TextMesh" id="TextMesh_0h8qe"]
+material = SubResource("ShaderMaterial_50y3s")
+text = "AreA 
+CleareD"
+font = ExtResource("3_tbo5t")
+font_size = 50
+depth = 0.1
+
+[sub_resource type="TextMesh" id="TextMesh_hbcyv"]
+material = SubResource("ShaderMaterial_50y3s")
+text = "YoU
+DieD"
+font = ExtResource("3_tbo5t")
+font_size = 50
+depth = 0.1
+
+[node name="Camera3D" type="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 26, 0)
+current = true
+fov = 37.8493
+script = ExtResource("1_sc3oh")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+
+[node name="SucessTransition" parent="." instance=ExtResource("2_hq10q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, -0.113)
+top_level = true
+
+[node name="MeshInstance3D" parent="SucessTransition" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
+mesh = SubResource("TextMesh_0h8qe")
+
+[node name="FailureTransition" parent="." instance=ExtResource("2_hq10q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
+top_level = true
+
+[node name="MeshInstance3D" parent="FailureTransition" index="0"]
+mesh = SubResource("TextMesh_hbcyv")
+
+[editable path="SucessTransition"]
+[editable path="FailureTransition"]

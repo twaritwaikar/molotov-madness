@@ -40,7 +40,9 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		var from = camera.project_ray_origin(event.position)
 		var to = from + camera.project_ray_normal(event.position) * 100
-		var cursor_position = Plane(Vector3.UP, transform.origin.y).intersects_ray(from, to)
+		var cursor_position = Plane.PLANE_XZ.intersects_ray(from, to)
+		cursor_position -= Vector3(camera.position.x, 0.0, camera.position.z)
+		print(position)
 		if cursor_position:
 			self.look_at(cursor_position)
 

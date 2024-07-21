@@ -42,4 +42,4 @@ func _process(delta):
 		$WorldEnvironment.environment.volumetric_fog_density = 1.0 - pow(time_to_close, 2.0)
 	
 	if time_to_close < 0:
-		get_tree().change_scene_to_file("res://testing/test_ground2.tscn")
+		get_tree().change_scene_to_file("res://levels/level_1.tscn")

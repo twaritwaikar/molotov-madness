@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cse1wtqs4legn"]
+
+[ext_resource type="Environment" uid="uid://dh1glnn0jxto8" path="res://assets/sky.tres" id="1_il0nv"]
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = ExtResource("1_il0nv")

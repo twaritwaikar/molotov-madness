@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3yvgv3perxem"]
+
+[ext_resource type="PackedScene" uid="uid://cse1wtqs4legn" path="res://levels/world_environment.tscn" id="1_usiop"]
+[ext_resource type="PackedScene" uid="uid://bl7alpfbpakx6" path="res://levels/wall.tscn" id="2_r0ddf"]
+[ext_resource type="PackedScene" uid="uid://c3qimjdn87g68" path="res://levels/camera_3d.tscn" id="3_yk3gd"]
+[ext_resource type="PackedScene" uid="uid://y5tjhjgc0h4q" path="res://player/player.tscn" id="4_rxy13"]
+[ext_resource type="AudioStream" uid="uid://crw3r342xvh8q" path="res://assets/music/brostep-metal-fusion-with-polyrhythmic-elements-225089.mp3" id="5_t62il"]
+[ext_resource type="PackedScene" uid="uid://cqtl0yyf85es2" path="res://UI/HUD.tscn" id="6_a444u"]
+[ext_resource type="PackedScene" uid="uid://cg71r6xm5itpw" path="res://enemies/defaultEnemy.tscn" id="7_cmop2"]
+[ext_resource type="PackedScene" uid="uid://drlhsw2mep2m7" path="res://levels/floor.tscn" id="8_vingj"]
+
+[node name="Level1" type="Node3D"]
+
+[node name="Wall" parent="." instance=ExtResource("2_r0ddf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.3, 1, 0.4)
+
+[node name="Wall2" parent="." instance=ExtResource("2_r0ddf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 31.6, 1, 0.4)
+
+[node name="Wall3" parent="." instance=ExtResource("2_r0ddf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 31.6, 1, -59.6)
+
+[node name="Wall4" parent="." instance=ExtResource("2_r0ddf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.3, 1, -59.6)
+
+[node name="Wall5" parent="." instance=ExtResource("2_r0ddf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 1, -90.1)
+
+[node name="Wall6" parent="." instance=ExtResource("2_r0ddf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 13, 29.9)
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("1_usiop")]
+
+[node name="Camera3D" parent="." instance=ExtResource("3_yk3gd")]
+
+[node name="Player" parent="." instance=ExtResource("4_rxy13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_t62il")
+autoplay = true
+bus = &"Music"
+
+[node name="HUG" parent="." instance=ExtResource("6_a444u")]
+
+[node name="Enemy" parent="." instance=ExtResource("7_cmop2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -62)
+targetCharacter = NodePath("../Player")
+
+[node name="Floor" parent="." instance=ExtResource("8_vingj")]
+
+[node name="Floor2" parent="." instance=ExtResource("8_vingj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -60)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://xykjheag3is8"]
 
-[ext_resource type="PackedScene" uid="uid://bl7alpfbpakx6" path="res://wall.tscn" id="1_23w31"]
+[ext_resource type="PackedScene" uid="uid://bl7alpfbpakx6" path="res://levels/wall.tscn" id="1_23w31"]
 
 [node name="Room" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0594, -4.37369, -26.2545)

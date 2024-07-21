@@ -1,7 +1,8 @@
 extends Node
 
-var level_0 = preload("res://testing/test_ground2.tscn")
-var levels =  [level_0]
+var levels =  [
+	preload("res://levels/level_1.tscn")
+]
 var current_level = 0
 
 var health
@@ -58,6 +59,3 @@ func success():
 
 func molotov_hit_ground():
 	camera_shake.emit(1.0, 0.3)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

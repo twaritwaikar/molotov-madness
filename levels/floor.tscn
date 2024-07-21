@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://drlhsw2mep2m7"]
+
+[ext_resource type="Texture2D" uid="uid://c6r6uiwui0xk6" path="res://TilesCeramicSquareLarge001/TilesCeramicSquareLarge001_REFL_4K.jpg" id="1_tfad3"]
+[ext_resource type="Texture2D" uid="uid://bbx1fx5eipxdj" path="res://TilesCeramicSquareLarge001/TilesCeramicSquareLarge001_NRM_4K.jpg" id="2_s0a8r"]
+[ext_resource type="Texture2D" uid="uid://b21lamofgv4pc" path="res://TilesCeramicSquareLarge001/TilesCeramicSquareLarge001_GLOSS_4K.jpg" id="3_0qlj7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qpd54"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bs2vu"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fgk0y"]
+albedo_color = Color(0.325446, 0.333532, 0.307601, 1)
+roughness_texture = ExtResource("3_0qlj7")
+normal_enabled = true
+normal_texture = ExtResource("2_s0a8r")
+heightmap_enabled = true
+heightmap_texture = ExtResource("1_tfad3")
+
+[node name="Floor" type="StaticBody3D"]
+disable_mode = 1
+metadata/is_floor = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+shape = SubResource("BoxShape3D_qpd54")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_bs2vu")
+skeleton = NodePath("../CollisionShape3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_fgk0y")

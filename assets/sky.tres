@@ -10,6 +10,7 @@ sky_material = SubResource("PanoramaSkyMaterial_omqsj")
 
 [resource]
 background_mode = 2
+background_energy_multiplier = 1.25
 sky = SubResource("Sky_5u52a")
 sky_rotation = Vector3(1.82736, -1.59872, 0.200713)
 ambient_light_source = 2
@@ -23,5 +24,8 @@ glow_intensity = 3.27
 glow_strength = 0.34
 glow_bloom = 1.0
 glow_blend_mode = 1
+fog_light_color = Color(5.77569e-07, 0.98637, 0.998949, 1)
+fog_density = 0.0218
+fog_sky_affect = 0.0
 volumetric_fog_density = 0.025
 volumetric_fog_albedo = Color(0.690196, 0.188235, 0.886275, 1)

@@ -17,18 +17,24 @@ func _ready():
 	State.camera_shake.connect(shake)
 
 func _process(delta):
-	# Follow player on X-Z plane
-	self.position.x = lerp(self.position.x, get_parent().get_node("Player").position.x, stickiness_x)
-	self.position.z = lerp(self.position.z, get_parent().get_node("Player").position.z, stickiness_y)
-	
-	# Speed zoom out effect in Y axis
-	var speed_fear = get_parent().get_node("Player").velocity.length() * speed_fear_modifier
-	var target_camera_height = camera_height * (1 + speed_fear)
+	var target_camera_height = 0
+	var camera_zoom_factor = 1.0
 	if(transition):
 		target_camera_height = $SucessTransition.global_position.y + 2
 		translate(-shaken_total)
 		shaken_total -= shaken_total
-	self.position.y = lerp(self.position.y, target_camera_height, 0.1)
+		camera_zoom_factor = 0.5		
+	else:
+		# Follow player on X-Z plane
+		self.position.x = lerp(self.position.x, get_parent().get_node("Player").position.x, stickiness_x)
+		self.position.z = lerp(self.position.z, get_parent().get_node("Player").position.z, stickiness_y)
+		
+		# Speed zoom out effect in Y axis
+		var speed_fear = get_parent().get_node("Player").velocity.length() * speed_fear_modifier
+		target_camera_height = camera_height * (1 + speed_fear)
+		camera_zoom_factor = 0.1
+		
+	self.position.y = lerp(self.position.y, target_camera_height, camera_zoom_factor)
 	
 	
 	if(shake_until > 0 && not transition):
