@@ -35,7 +35,6 @@ func _on_body_entered(body):
 	if body.get_meta("is_floor", false) == true:
 		$Fire/GPUParticles3D.emitting = true
 		$Impact/GPUParticles3D.emitting = true
-		get_parent().add_child($Area3D/MeshInstance3D)
 		should_dye = true
 
 		if $ThrowAudioStream.playing:

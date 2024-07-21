@@ -132,6 +132,14 @@ stream = SubResource("AudioStreamRandomizer_gctgw")
 lifetime = 1.0
 process_material = SubResource("ParticleProcessMaterial_xkm6i")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Fire"]
+light_color = Color(0.875739, 0.568811, 0.122575, 1)
+light_energy = 1.87
+light_size = 0.467
+light_specular = 4.239
+omni_range = 129.569
+omni_attenuation = 0.267943
+
 [node name="Impact" parent="." instance=ExtResource("6_7773f")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
