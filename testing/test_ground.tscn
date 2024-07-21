@@ -27,9 +27,12 @@ disabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -4.555, 43.955, 47)
-current = true
 fov = 37.8493
 script = ExtResource("2_qx1k0")
+camera_height = null
+speed_fear_modifier = null
+stickiness_x = null
+stickiness_y = null
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Camera3D"]
 

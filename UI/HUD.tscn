@@ -53,7 +53,6 @@ wait_time = 2.0
 autostart = true
 
 [node name="HealthBar" parent="." instance=ExtResource("3_adu3w")]
-visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_right = 0.0

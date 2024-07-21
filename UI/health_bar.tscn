@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c1xq60ojgi4d"]
+[gd_scene load_steps=11 format=3 uid="uid://c1xq60ojgi4d"]
 
 [ext_resource type="Script" path="res://UI/HealthBar.gd" id="1_7wun5"]
+[ext_resource type="Shader" path="res://UI/fire_2d.gdshader" id="2_mn7op"]
+[ext_resource type="Texture2D" uid="uid://bubiyjy116mpe" path="res://icon.svg" id="3_0gk3t"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qy0j3"]
 
@@ -17,6 +19,21 @@ shadow_offset = Vector2(2.08165e-12, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6k5q6"]
 bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nxatf"]
+frequency = 0.0045
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yid6u"]
+noise = SubResource("FastNoiseLite_nxatf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gvuhg"]
+shader = ExtResource("2_mn7op")
+shader_parameter/root_color = Vector4(1, 0.75, 0.3, 1)
+shader_parameter/tip_color = Vector4(1, 0.03, 0.001, 1)
+shader_parameter/fire_alpha = 1.0
+shader_parameter/fire_speed = Vector2(0, 1)
+shader_parameter/fire_aperture = 0.22
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_yid6u")
 
 [node name="HealthBar" type="ProgressBar"]
 z_index = 1
@@ -49,5 +66,15 @@ show_percentage = false
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.4
 one_shot = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_gvuhg")
+position = Vector2(115, 73)
+texture = ExtResource("3_0gk3t")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

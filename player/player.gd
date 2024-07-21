@@ -8,7 +8,6 @@ var hold_duration = 0.0 # seconds
 const MAX_HOLD = 1.0 # seconds
 var molotov_scene = preload("res://molotov/molotov.tscn")
 @onready var camera = get_parent().get_node("Camera3D")
-@onready var healthbar = $HealthBar
 
 func _physics_process(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")

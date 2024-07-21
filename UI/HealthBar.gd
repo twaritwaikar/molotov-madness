@@ -10,14 +10,12 @@ func _set_health(new_health):
 	var prev_health = health
 	health = min(max_value, new_health)
 	value = health
-	
-	if health<0:
-		queue_free()
-	
-	if health<prev_health:
-		timer.start()
-	else:
-		damageBar.value = health
+	#
+	#
+	#if health<prev_health:
+		#timer.start()
+	#else:
+		#damageBar.value = health
 	
 	
 
@@ -36,6 +34,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	_set_health(State.health)
+	$DamageBar.value = lerp($DamageBar.value, value, 0.1)
 	pass
 
 
