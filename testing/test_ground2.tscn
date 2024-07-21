@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://belhj3umardow"]
+[gd_scene load_steps=10 format=3 uid="uid://belhj3umardow"]
 
 [ext_resource type="PackedScene" uid="uid://y5tjhjgc0h4q" path="res://player/player.tscn" id="1_hrti0"]
 [ext_resource type="Script" path="res://testing/camera.gd" id="2_g1byd"]
 [ext_resource type="PackedScene" uid="uid://bckw18bbkkp3m" path="res://testing/enemytesting.tscn" id="3_kpqvl"]
 [ext_resource type="Environment" uid="uid://dv45nrn10x121" path="res://assets/sky.tres" id="4_geqie"]
 [ext_resource type="PackedScene" uid="uid://b3e0nmxjpemxt" path="res://lights/rotating_lights.tscn" id="5_bpa22"]
+[ext_resource type="AudioStream" uid="uid://crw3r342xvh8q" path="res://assets/music/brostep-metal-fusion-with-polyrhythmic-elements-225089.mp3" id="6_mso3a"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_r1p8b"]
 
@@ -56,10 +57,24 @@ sky_mode = 1
 [node name="Enemytesting" parent="." instance=ExtResource("3_kpqvl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.904484, 1.24548)
 
+[node name="Enemy" parent="Enemytesting" index="1"]
+speed = 10
+
+[node name="Enemy2" parent="Enemytesting" index="2"]
+speed = 10
+
+[node name="Enemy3" parent="Enemytesting" index="3"]
+speed = 10
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("4_geqie")
 
 [node name="RotatingLights" parent="." instance=ExtResource("5_bpa22")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.22562, 5.27639, 18.3215)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_mso3a")
+autoplay = true
+bus = &"Music"
 
 [editable path="Enemytesting"]

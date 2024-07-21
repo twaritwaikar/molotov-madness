@@ -1,14 +1,23 @@
-[gd_scene load_steps=11 format=3 uid="uid://cg71r6xm5itpw"]
+[gd_scene load_steps=12 format=3 uid="uid://cg71r6xm5itpw"]
 
 [ext_resource type="Script" path="res://enemies/defaultEnemy.gd" id="1_g73ax"]
 [ext_resource type="ArrayMesh" uid="uid://d2jnf0g7t4ofm" path="res://assets/models/enemy.obj" id="2_cwkhw"]
-[ext_resource type="Material" uid="uid://dhsmkumkicpph" path="res://assets/singh.tres" id="3_vnlbh"]
+[ext_resource type="Material" uid="uid://cjt017b5ir3x0" path="res://enemies/defaultEnemy.tres" id="3_r45i0"]
 [ext_resource type="PackedScene" uid="uid://0payu0dnwm5h" path="res://misc/fire.tscn" id="4_ga5of"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h381s"]
-transparency = 1
-albedo_color = Color(0, 0.713726, 0.254902, 1)
-roughness = 0.0
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4wnn5"]
+resource_local_to_scene = true
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ljcfo"]
+resource_local_to_scene = true
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 16.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6raj5"]
 height = 2.64609
@@ -37,17 +46,19 @@ scale_min = 0.5
 
 [node name="Enemy" type="CharacterBody3D"]
 disable_mode = 2
-collision_layer = 0
+collision_layer = 2
+collision_mask = 13
 motion_mode = 1
 script = ExtResource("1_g73ax")
+metadata/is_enemy = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
 gi_mode = 2
 mesh = ExtResource("2_cwkhw")
-surface_material_override/0 = SubResource("StandardMaterial3D_h381s")
-surface_material_override/1 = ExtResource("3_vnlbh")
-surface_material_override/2 = ExtResource("3_vnlbh")
+surface_material_override/0 = ExtResource("3_r45i0")
+surface_material_override/1 = SubResource("StandardMaterial3D_4wnn5")
+surface_material_override/2 = SubResource("StandardMaterial3D_ljcfo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_6raj5")
