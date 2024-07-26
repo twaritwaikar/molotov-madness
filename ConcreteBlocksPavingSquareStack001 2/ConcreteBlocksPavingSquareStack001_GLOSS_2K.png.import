@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cfcgh5wku3313"
 path.s3tc="res://.godot/imported/ConcreteBlocksPavingSquareStack001_GLOSS_2K.png-a6a4333fcb1cb3d7ca4cf58833a32e6d.s3tc.ctex"
+path.etc2="res://.godot/imported/ConcreteBlocksPavingSquareStack001_GLOSS_2K.png-a6a4333fcb1cb3d7ca4cf58833a32e6d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://ConcreteBlocksPavingSquareStack001 2/ConcreteBlocksPavingSquareStack001_GLOSS_2K.png"
-dest_files=["res://.godot/imported/ConcreteBlocksPavingSquareStack001_GLOSS_2K.png-a6a4333fcb1cb3d7ca4cf58833a32e6d.s3tc.ctex"]
+dest_files=["res://.godot/imported/ConcreteBlocksPavingSquareStack001_GLOSS_2K.png-a6a4333fcb1cb3d7ca4cf58833a32e6d.s3tc.ctex", "res://.godot/imported/ConcreteBlocksPavingSquareStack001_GLOSS_2K.png-a6a4333fcb1cb3d7ca4cf58833a32e6d.etc2.ctex"]
 
 [params]
 

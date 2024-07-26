@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c6r6uiwui0xk6"
 path.s3tc="res://.godot/imported/TilesCeramicSquareLarge001_REFL_4K.jpg-e9f2a71f4e6017d489735b88df8463ad.s3tc.ctex"
+path.etc2="res://.godot/imported/TilesCeramicSquareLarge001_REFL_4K.jpg-e9f2a71f4e6017d489735b88df8463ad.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://TilesCeramicSquareLarge001/TilesCeramicSquareLarge001_REFL_4K.jpg"
-dest_files=["res://.godot/imported/TilesCeramicSquareLarge001_REFL_4K.jpg-e9f2a71f4e6017d489735b88df8463ad.s3tc.ctex"]
+dest_files=["res://.godot/imported/TilesCeramicSquareLarge001_REFL_4K.jpg-e9f2a71f4e6017d489735b88df8463ad.s3tc.ctex", "res://.godot/imported/TilesCeramicSquareLarge001_REFL_4K.jpg-e9f2a71f4e6017d489735b88df8463ad.etc2.ctex"]
 
 [params]
 

@@ -18,10 +18,13 @@ var molotovs
 var oxygenFinish
 var time_until_switch
 var switch_queued = true
+var throw_is_pressed = false
+var throw_vector = Vector3.ZERO
 
 signal camera_shake(intensity, time)
 signal player_hit
 signal turn_transition_on(success)
+signal throw()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -68,3 +71,6 @@ func success():
 
 func molotov_hit_ground():
 	camera_shake.emit(1.0, 0.3)
+
+func call_throw(throw_vector):
+	throw.emit()

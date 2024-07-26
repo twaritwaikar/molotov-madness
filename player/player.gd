@@ -14,6 +14,7 @@ var molotov_scene = preload("res://molotov/molotov.tscn")
 func _ready():
 	State.player_hit.connect(_get_hit)
 	State.turn_transition_on.connect(_enable_transition)
+	State.throw.connect(end_aiming)
 
 func _get_hit():
 	$HurtAudioStream.play()
@@ -23,7 +24,10 @@ func _enable_transition(alive):
 		queue_free()
 
 func _physics_process(delta):	
-	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	#var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var input_dir := Vector2.ZERO
+	input_dir.x = Input.get_axis("ui_left", "ui_right")
+	input_dir.y = Input.get_axis("ui_up", "ui_down")
 	var direction = (Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
@@ -31,7 +35,15 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
+		
+	#var throw_dir = Input.get_vector("throw_left", "throw_right", "throw_up", "throw_down")
+	#var throw_dir := Vector2.ZERO
+	#throw_dir.x = Input.get_axis("throw_left", "throw_right")
+	#throw_dir.y = Input.get_axis("throw_up", "throw_down")
+	#var throw_direction = (Vector3(throw_dir.x, 1.2, throw_dir.y)).normalized()
+	if State.throw_vector:
+		self.look_at((State.throw_vector*10 + position))# - Vector3(camera.position.x, 0.0, camera.position.z))*10)
+		#print("throw", State.throw_vector ))
 	move_and_slide()
 
 func _input(event):
@@ -49,6 +61,7 @@ func _input(event):
 		cursor_position -= Vector3(camera.position.x, 0.0, camera.position.z)
 		if cursor_position:
 			self.look_at(cursor_position)
+			#print(cursor_position)
 
 func _process(delta):
 	footstep_time -= delta
@@ -56,7 +69,7 @@ func _process(delta):
 		$WalkingAudioStream.play()
 		footstep_time = default_footstep_time
 	
-	if aiming:
+	if aiming or State.throw_is_pressed:
 		hold_duration += delta
 		clampf(hold_duration, 0.0, MAX_HOLD)
 

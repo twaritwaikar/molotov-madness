@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqtl0yyf85es2"]
+[gd_scene load_steps=6 format=3 uid="uid://cqtl0yyf85es2"]
 
 [ext_resource type="Script" path="res://UI/HUD.gd" id="1_7eqeu"]
 [ext_resource type="PackedScene" uid="uid://dsobtb2o60p42" path="res://UI/oxygenbar.tscn" id="1_b3tps"]
 [ext_resource type="FontFile" uid="uid://narb4fy6m5eo" path="res://assets/fonts/DangerNightPersonalUse-owdl4.otf" id="2_l0ide"]
 [ext_resource type="PackedScene" uid="uid://c1xq60ojgi4d" path="res://UI/health_bar.tscn" id="3_adu3w"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="5_d1jrk"]
 
 [node name="HUG" type="CanvasLayer"]
 follow_viewport_enabled = true
@@ -95,3 +96,31 @@ offset_top = -28.0
 offset_right = 285.5
 offset_bottom = -13.0
 grow_vertical = 0
+
+[node name="VirtualJoyStickMove" parent="." instance=ExtResource("5_d1jrk")]
+anchors_preset = 9
+anchor_top = 0.0
+offset_top = 0.0
+offset_right = 450.0
+offset_bottom = 0.0
+grow_vertical = 2
+joystick_mode = 1
+visibility_mode = 2
+
+[node name="VirtualJoyStickThrow" parent="." instance=ExtResource("5_d1jrk")]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+offset_left = -451.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 2
+joystick_mode = 1
+visibility_mode = 2
+action_left = "throw_left"
+action_right = "throw_right"
+action_up = "throw_up"
+action_down = "throw_down"
