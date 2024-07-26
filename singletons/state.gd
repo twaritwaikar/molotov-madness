@@ -20,6 +20,7 @@ var time_until_switch
 var switch_queued = true
 var throw_is_pressed = false
 var throw_vector = Vector3.ZERO
+var is_android = false
 
 signal camera_shake(intensity, time)
 signal player_hit
@@ -28,6 +29,8 @@ signal throw()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if OS.get_name() == "Android":
+		is_android = true
 	reset_variables()
 	pass # Replace with function body.
 

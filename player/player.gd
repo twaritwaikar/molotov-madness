@@ -44,6 +44,8 @@ func _physics_process(delta):
 	if State.throw_vector:
 		self.look_at((State.throw_vector*10 + position))# - Vector3(camera.position.x, 0.0, camera.position.z))*10)
 		#print("throw", State.throw_vector ))
+	elif direction and State.is_android:
+		self.look_at(direction*10 + position)
 	move_and_slide()
 
 func _input(event):
