@@ -12,6 +12,8 @@ var time_until_death = 1.5
 var total_time_until_death = time_until_death
 
 func _ready():	
+	if(OS.get_name()!="Android"):
+		$OmniLight3D.queue_free()
 	if(enemy_type=="default"):
 		target = get_node(targetCharacter)
 	if(enemy_type=="crazy"):

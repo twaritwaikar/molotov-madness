@@ -11,6 +11,7 @@ size = Vector3(60, 2, 60)
 size = Vector3(60, 2, 60)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fgk0y"]
+vertex_color_is_srgb = true
 albedo_color = Color(0.325446, 0.333532, 0.307601, 1)
 roughness_texture = ExtResource("3_0qlj7")
 normal_enabled = true

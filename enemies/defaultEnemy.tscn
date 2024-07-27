@@ -117,6 +117,10 @@ shape = SubResource("CapsuleShape3D_bxupk")
 [node name="HurtAudioStream" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_ogej3")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26303, 0)
+light_color = Color(0.992925, 0.6627, 0.63945, 1)
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]
 
 [editable path="Fire"]

@@ -19,7 +19,9 @@ func _ready():
 	$MESH.show()
 	$MESH2.show()
 
-func _process(delta):	
+func _process(delta):
+	if OS.get_name() == "Android":
+		$MeshInstance3D3.mesh.text = "Touch to start"
 	time_to_reveal -= delta
 
 	if time_to_reveal < 0:
@@ -43,3 +45,9 @@ func _process(delta):
 	
 	if time_to_close < 0:
 		get_tree().change_scene_to_file("res://levels/level_1.tscn")
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch:
+		if !is_closing and !$AudioStreamPlayer2.is_playing():
+			$AudioStreamPlayer2.play()
+		is_closing = true

@@ -60,5 +60,10 @@ top_level = true
 [node name="MeshInstance3D" parent="FailureTransition" index="0"]
 mesh = SubResource("TextMesh_hbcyv")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+light_color = Color(5.53504e-07, 0.169264, 0.277875, 1)
+light_energy = 4.0
+sky_mode = 1
+
 [editable path="SucessTransition"]
 [editable path="FailureTransition"]

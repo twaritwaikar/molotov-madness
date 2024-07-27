@@ -13,6 +13,8 @@ var shaken_total = Vector3(0, 0, 0)
 var transition = false
 
 func _ready():
+	if(OS.get_name() != "Android"):
+		$DirectionalLight3D.queue_free()
 	State.turn_transition_on.connect(enable_transition)
 	State.camera_shake.connect(shake)
 
